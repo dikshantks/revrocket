@@ -16,19 +16,19 @@ class Mainscreen extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
-                  // color: Colors.blue,
+// color: Colors.blue,
                   ),
             ),
             Expanded(
               flex: 5,
               child: Container(
-                  // color: Colors.yellow,
+// color: Colors.yellow,
                   ),
             ),
             Expanded(
               flex: 1,
               child: Container(
-                  // color: Colors.blue,
+// color: Colors.blue,
                   ),
             ),
           ],
