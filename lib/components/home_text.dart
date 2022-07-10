@@ -1,10 +1,15 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Hometext extends StatefulWidget {
-  Hometext({Key? key, required this.heading}) : super(key: key);
+  Hometext({Key? key, required this.heading, required this.onpress})
+      : super(key: key);
 
   String heading;
+
+  VoidCallback onpress;
 
   @override
   State<Hometext> createState() => _HometextState();
@@ -15,30 +20,26 @@ class _HometextState extends State<Hometext> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      decoration: BoxDecoration(
-        // color: ishover ? Color(0xff696969) : Colors.transparent,
-        borderRadius: BorderRadius.circular(20.0),
+      // color: Color(0xff696969),
+      duration: const Duration(milliseconds: 100),
+      padding: EdgeInsets.only(
+        top: ishover ? 1.0 : 10.0,
       ),
-      // height: 100.0,
-      duration: Duration(milliseconds: 100),
-      padding:
-          EdgeInsets.only(top: ishover ? 1 : 5.0, bottom: !ishover ? 1 : 3.0),
-
       child: InkWell(
-        onTap: (() {
-          print("sfsf");
-        }),
-        onHover: ((value) {
+        onTap: widget.onpress,
+        onHover: (f) {
           setState(() {
-            ishover = value;
+            ishover = f;
           });
-        }),
+        },
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+          margin: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Text(
             widget.heading,
-            style:
-                GoogleFonts.firaSans(fontSize: 30.0, color: Color(0xffbbccdd)),
+            style: GoogleFonts.firaSans(
+              fontSize: 30.0,
+              color: Color(0xffbbccdd),
+            ),
           ),
         ),
       ),
