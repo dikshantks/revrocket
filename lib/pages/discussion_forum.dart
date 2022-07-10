@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:revrocket/pages/home_page.dart';
 
 import '../components/home_text.dart';
 
@@ -12,6 +13,9 @@ class Discussion_page extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        leadingWidth: 100.0,
+        leading: Reuselogo(),
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         title: Center(

@@ -13,13 +13,21 @@ class HomePage extends StatelessWidget {
 
     String name = "revenue rocket";
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        title: Center(child: TopNavBar(screen: screen, name: name)),
+        leadingWidth: 100.0,
+        leading: Reuselogo(),
+      ),
       body: Container(
         decoration: const BoxDecoration(
           color: Color(0xff111111),
         ),
         child: Column(
           children: [
-            TopNavBar(screen: screen, name: name),
             const Mainscreen(),
             Container(
               width: screen.width,
@@ -27,6 +35,33 @@ class HomePage extends StatelessWidget {
               // color: Colors.amber,
             )
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class Reuselogo extends StatelessWidget {
+  const Reuselogo({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Theme(
+      data: Theme.of(context).copyWith(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        hoverColor: Colors.transparent,
+      ),
+      child: InkWell(
+        enableFeedback: false,
+        onTap: () {},
+        child: Container(
+          child: Image.asset(
+            'assets/logo.png',
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );

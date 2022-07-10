@@ -18,82 +18,35 @@ class TopNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: screen.height * 0.12,
-      // color: Colors.red,
-      margin: const EdgeInsets.all(4.0),
-      alignment: Alignment.center,
-      child: Row(
-        children: [
-          Container(
-            margin: EdgeInsets.only(
-              left: 10.0,
-            ),
-            // color: Colors.blueGrey,
-            child: Image.asset(
-              'assets/logo.png',
-              height: 100.0,
-              width: 100.0,
-            ),
-          ),
-          ContentBar(screen: screen),
-        ],
-      ),
-    );
-  }
-}
-
-class ContentBar extends StatelessWidget {
-  const ContentBar({
-    Key? key,
-    required this.screen,
-  }) : super(key: key);
-
-  final Size screen;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        // height: 300.0,
-        width: screen.width * 0.5,
-        margin: EdgeInsets.symmetric(
-          horizontal: 30.0,
-          // vertical: 5.0,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Hometext(
+          heading: "Get started",
+          onpress: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Learnpage()),
+            );
+          },
         ),
-        padding: EdgeInsets.symmetric(horizontal: 10.0),
-        alignment: Alignment.center,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Hometext(
-              heading: "Get started",
-              onpress: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Learnpage()),
-                );
-              },
-            ),
-            SizedBox(
-              width: screen.width * 0.1,
-            ),
-            Hometext(
-              heading: "discuss",
-              onpress: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Discussion_page(
-                      screen: screen,
-                    ),
-                  ),
-                );
-              },
-            ),
-          ],
+        SizedBox(
+          width: screen.width * 0.1,
         ),
-      ),
+        Hometext(
+          heading: "discuss",
+          onpress: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Discussion_page(
+                  screen: screen,
+                ),
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:revrocket/components/home_text.dart';
 
+import 'home_page.dart';
+
 class Learnpage extends StatelessWidget {
   const Learnpage({Key? key}) : super(key: key);
 
@@ -9,8 +11,11 @@ class Learnpage extends StatelessWidget {
     return Scaffold(
       // extendBodyBehindAppBar: true,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 0.0,
         backgroundColor: Color(0xff111111),
-        elevation: 1.0,
+        leadingWidth: 100.0,
+        leading: Reuselogo(),
         title: Center(
           // color: Colors.amber,
           child: Hometext(
@@ -30,7 +35,11 @@ class Learnpage extends StatelessWidget {
                 child: Container(
                   color: Colors.blue,
                 )),
-            Expanded(child: Container(color: Colors.amber))
+            Expanded(
+              child: Container(
+                color: Colors.amber,
+              ),
+            )
           ],
         ),
       ),
