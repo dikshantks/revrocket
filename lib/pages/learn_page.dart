@@ -1,11 +1,18 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, camel_case_types, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:revrocket/clors.dart';
 import 'package:revrocket/components/home_text.dart';
 
 import 'home_page.dart';
 
-class Learnpage extends StatelessWidget {
+class Learnpage extends StatefulWidget {
   const Learnpage({Key? key}) : super(key: key);
 
+  @override
+  State<Learnpage> createState() => _LearnpageState();
+}
+
+class _LearnpageState extends State<Learnpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,35 +20,23 @@ class Learnpage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0.0,
-        backgroundColor: Color(0xff111111),
+        backgroundColor: kprimaryscaffhold,
         leadingWidth: 100.0,
-        leading: Reuselogo(),
+        leading: Reuselogo(
+          onpress: () {
+            Navigator.pop(context);
+          },
+        ),
         title: Center(
           // color: Colors.amber,
           child: Hometext(
             heading: "learn",
-            onpress: () {
-              Navigator.pop(context);
-            },
+            onpress: () {},
           ),
         ),
       ),
       body: Container(
-        color: Color(0xff111111),
-        child: Row(
-          children: [
-            Expanded(
-                flex: 3,
-                child: Container(
-                  color: Colors.blue,
-                )),
-            Expanded(
-              child: Container(
-                color: Colors.amber,
-              ),
-            )
-          ],
-        ),
+        color: Colors.red,
       ),
     );
   }

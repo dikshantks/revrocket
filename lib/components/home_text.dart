@@ -1,8 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:revrocket/clors.dart';
 
+// ignore: must_be_immutable
 class Hometext extends StatefulWidget {
   Hometext({Key? key, required this.heading, required this.onpress})
       : super(key: key);
@@ -45,7 +45,9 @@ class _HometextState extends State<Hometext> {
               widget.heading,
               style: GoogleFonts.firaSans(
                 fontSize: 30.0,
-                color: !ishover ? Color(0xffbbccdd) : Color(0xffddffff),
+
+                // ignore: prefer_const_constructors
+                color: !ishover ? kprimarytext : ksecondarytext,
               ),
             ),
           ),

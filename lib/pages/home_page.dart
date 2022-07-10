@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:revrocket/clors.dart';
 
 import '../components/top_navbar.dart';
 
@@ -20,16 +23,18 @@ class HomePage extends StatelessWidget {
         elevation: 0.0,
         title: Center(child: TopNavBar(screen: screen, name: name)),
         leadingWidth: 100.0,
-        leading: Reuselogo(),
+        leading: Reuselogo(
+          onpress: () {},
+        ),
       ),
       body: Container(
         decoration: const BoxDecoration(
-          color: Color(0xff111111),
+          color: kprimaryscaffhold,
         ),
         child: Column(
           children: [
             const Mainscreen(),
-            Container(
+            SizedBox(
               width: screen.width,
               height: screen.height * 0.09,
               // color: Colors.amber,
@@ -41,11 +46,16 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class Reuselogo extends StatelessWidget {
-  const Reuselogo({
-    Key? key,
-  }) : super(key: key);
+class Reuselogo extends StatefulWidget {
+  const Reuselogo({Key? key, required this.onpress}) : super(key: key);
 
+  final VoidCallback onpress;
+
+  @override
+  State<Reuselogo> createState() => _ReuselogoState();
+}
+
+class _ReuselogoState extends State<Reuselogo> {
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -56,12 +66,10 @@ class Reuselogo extends StatelessWidget {
       ),
       child: InkWell(
         enableFeedback: false,
-        onTap: () {},
-        child: Container(
-          child: Image.asset(
-            'assets/logo.png',
-            fit: BoxFit.cover,
-          ),
+        onTap: widget.onpress,
+        child: Image.asset(
+          'assets/logo.png',
+          fit: BoxFit.cover,
         ),
       ),
     );

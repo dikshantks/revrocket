@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:revrocket/pages/home_page.dart';
+// ignore_for_file: must_be_immutable, camel_case_types, prefer_const_constructors
 
-import '../components/home_text.dart';
+import 'package:flutter/material.dart';
+import 'package:revrocket/clors.dart';
+import 'package:revrocket/pages/home_page.dart';
 
 class Discussion_page extends StatelessWidget {
   Discussion_page({Key? key, required this.screen}) : super(key: key);
@@ -14,22 +15,34 @@ class Discussion_page extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leadingWidth: 100.0,
-        leading: Reuselogo(),
+        leading: Reuselogo(onpress: () {
+          Navigator.pop(context);
+        }),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         title: Center(
           // color: Colors.amber,
-          child: Hometext(
-            heading: "discussion form",
-            onpress: () {
-              Navigator.pop(context);
-            },
+          child: TextField(
+            onChanged: (value) {},
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                borderSide: BorderSide.none,
+              ),
+              hintText: "Search",
+              fillColor: Colors.amber,
+              filled: true,
+              suffixIcon: Padding(
+                padding: const EdgeInsets.all(0.75), //15
+                child: Icon(Icons.search),
+              ),
+            ),
           ),
         ),
       ),
       body: Container(
-        color: Color(0xff111111),
+        color: kprimaryscaffhold,
       ),
     );
   }
