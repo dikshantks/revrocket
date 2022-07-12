@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:revrocket/pages/home_page.dart';
+import 'package:revrocket/themes.dart';
 
 void main() {
   // Paint.enableDithering = true;
@@ -12,10 +13,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: CustomTheme.mythme,
       debugShowCheckedModeBanner: false,
       title: 'Revenu Rocket',
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

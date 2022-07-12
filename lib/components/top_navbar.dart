@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:revrocket/components/home_text.dart';
-import 'package:revrocket/pages/learn_page.dart';
+import 'package:revrocket/pages/.dart';
 
 import '../pages/discussion_forum.dart';
 

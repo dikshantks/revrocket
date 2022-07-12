@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable, camel_case_types, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:revrocket/clors.dart';
+import 'package:revrocket/constants.dart';
 import 'package:revrocket/pages/home_page.dart';
 
 class Discussion_page extends StatelessWidget {

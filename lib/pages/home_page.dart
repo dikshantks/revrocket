@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:revrocket/clors.dart';
+import 'package:revrocket/constants.dart';
 
 import '../components/top_navbar.dart';
 
@@ -16,15 +16,18 @@ class HomePage extends StatelessWidget {
 
     String name = "revenue rocket";
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-        title: Center(child: TopNavBar(screen: screen, name: name)),
-        leadingWidth: 100.0,
-        leading: Reuselogo(
-          onpress: () {},
+      // extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70.0),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          title: Center(child: TopNavBar(screen: screen, name: name)),
+          leadingWidth: 100.0,
+          leading: Reuselogo(
+            onpress: () {},
+          ),
         ),
       ),
       body: Container(
@@ -34,7 +37,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             const Mainscreen(),
-            SizedBox(
+            Container(
               width: screen.width,
               height: screen.height * 0.09,
               // color: Colors.amber,
@@ -64,12 +67,14 @@ class _ReuselogoState extends State<Reuselogo> {
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
       ),
-      child: InkWell(
-        enableFeedback: false,
-        onTap: widget.onpress,
-        child: Image.asset(
-          'assets/logo.png',
-          fit: BoxFit.cover,
+      child: SafeArea(
+        child: InkWell(
+          enableFeedback: false,
+          onTap: widget.onpress,
+          child: Image.asset(
+            'assets/logo.png',
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );
