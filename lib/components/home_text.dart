@@ -39,7 +39,8 @@ class _HometextState extends State<Hometext> {
             });
           },
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 3.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 3.0),
             margin: const EdgeInsets.only(top: 20.0),
             decoration: const BoxDecoration(
                 color: kErrorColor,
