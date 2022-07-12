@@ -50,9 +50,9 @@ class Content extends StatelessWidget {
       child: Text(
         content,
         style: GoogleFonts.firaSans(
-          fontWeight: FontWeight.w400,
-          fontSize: 15.0,
-          color: kprimarytext,
+          fontWeight: FontWeight.w200,
+          fontSize: 20.0,
+          color: Colors.white,
         ),
         textAlign: TextAlign.justify,
       ),

@@ -23,8 +23,8 @@ class Mainscreen extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
-                color: Colors.blue,
-              ),
+                  // color: Colors.blue,
+                  ),
             ),
             Expanded(
               flex: 5,
@@ -34,7 +34,7 @@ class Mainscreen extends StatelessWidget {
                   options: CarouselOptions(
                     autoPlay: true,
                     reverse: true,
-                    autoPlayInterval: Duration(seconds: 100),
+                    autoPlayInterval: Duration(seconds: 2),
                   ),
                   itemCount: imagepath.length,
                   itemBuilder: (context, index, realindex) {
@@ -49,8 +49,8 @@ class Mainscreen extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
-                color: Colors.blue,
-              ),
+                  // color: Colors.blue,
+                  ),
             ),
           ],
         ),
