@@ -1,7 +1,7 @@
 const heading1 = "What Is the Stock Market?";
 
 const subheading_arr = [
-  "What Is t Market",
+  "What Is stock Market",
   "Understanding the Stock Market",
   "idk somithing else i guess",
 ];

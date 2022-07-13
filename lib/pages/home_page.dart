@@ -18,12 +18,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       // extendBodyBehindAppBar: true,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70.0),
+        preferredSize: Size.fromHeight(100.0),
         child: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,
           elevation: 0.0,
-          title: Center(child: TopNavBar(screen: screen, name: name)),
+          title: TopNavBar(screen: screen, name: name),
           leadingWidth: 100.0,
           leading: Reuselogo(
             onpress: () {},
@@ -36,8 +36,12 @@ class HomePage extends StatelessWidget {
         ),
         child: Column(
           children: [
+            Divider(
+              thickness: 0.3,
+              color: klines,
+            ),
             const Mainscreen(),
-            Container(
+            SizedBox(
               width: screen.width,
               height: screen.height * 0.09,
               // color: Colors.amber,

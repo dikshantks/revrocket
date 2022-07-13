@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, camel_case_types, prefer_const_literals_to_create_immutables, prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:revrocket/components/textfor_page1.dart';
@@ -39,18 +40,18 @@ class _LearnpageState extends State<Learnpage> {
         automaticallyImplyLeading: false,
         elevation: 0.0,
         backgroundColor: kprimaryscaffhold,
-        leadingWidth: 100.0,
+        leadingWidth: 80.0,
         leading: Reuselogo(
           onpress: () {
             Navigator.pop(context);
           },
         ),
-        title: Center(
-          child: Hometext(
-            heading: "learn",
-            onpress: () {},
-          ),
-        ),
+        // title: Center(
+        //   child: Hometext(
+        //     heading: "learn",
+        //     onpress: () {},
+        //   ),
+        // ),
       ),
       body: stock_learn1(
           scrollController: _scrollController,
@@ -81,8 +82,12 @@ class stock_learn1 extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+              padding: const EdgeInsets.only(
+                top: 50.0,
+                left: 30.0,
+                right: 70.0,
+                bottom: 20.0,
+              ),
               child: SingleChildScrollView(
                 controller: _scrollController,
                 child: Column(
@@ -90,7 +95,6 @@ class stock_learn1 extends StatelessWidget {
                   children: [
                     writer_deatil(),
                     Headline1(
-                      // key: headLineKeyList[0],
                       headline1: heading1,
                     ),
                     subheadings(
@@ -128,22 +132,24 @@ class stock_learn1 extends StatelessWidget {
             ),
           ),
           VerticalDivider(
-            thickness: 3,
+            thickness: 0.5,
             color: klines,
           ),
           Expanded(
             flex: 1,
             child: Container(
-              padding:
-                  EdgeInsets.symmetric(horizontal: 20.0, vertical: textsize1),
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.only(right: 10.0),
               color: Colors.pink,
               child: Column(
                 children: [
                   Center(
-                    child: Text(
-                      'Table of Content',
-                      style: GoogleFonts.poppins(
-                          color: kprimarytext, fontSize: 40.0),
+                    child: FittedBox(
+                      child: Text(
+                        'Table of Content',
+                        style: GoogleFonts.poppins(
+                            color: kprimarytext, fontSize: 50.0),
+                      ),
                     ),
                   ),
                   ListView.builder(
@@ -182,18 +188,23 @@ class subheading_tile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      hoverColor: klines,
       onTap: () {
         Scrollable.ensureVisible(headLineKeyList[index].currentContext!,
             duration: const Duration(seconds: 1));
       },
       title: Container(
-        margin: EdgeInsets.all(10),
-        child: Text(
-          subheading,
-          style: GoogleFonts.poppins(
-              fontSize: textsize1,
-              fontWeight: FontWeight.w500,
-              color: kprimarytext),
+        color: kErrorColor,
+        height: 70.0,
+        margin: EdgeInsets.only(bottom: 10.0, top: 10.0),
+        child: FittedBox(
+          child: Text(
+            subheading,
+            style: GoogleFonts.poppins(
+                fontSize: textsize1,
+                fontWeight: FontWeight.w400,
+                color: kprimarytext),
+          ),
         ),
       ),
     );
