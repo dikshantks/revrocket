@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:revrocket/pages/home_page.dart';
-import 'package:revrocket/themes.dart';
+import 'package:revrocket/models/themes.dart';
 
 void main() {
   // Paint.enableDithering = true;

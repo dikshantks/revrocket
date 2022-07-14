@@ -1,47 +1,45 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../models/constants.dart';
 
-class writer_deatil extends StatelessWidget {
-  const writer_deatil({
+class discussion_user extends StatelessWidget {
+  const discussion_user({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 30.0),
-      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.3,
+      height: 50.0,
       child: FittedBox(
         child: Row(
           children: [
-            CircleAvatar(
+            const CircleAvatar(
               radius: 40.0,
               backgroundColor: klines,
             ),
-            VerticalDivider(
+            const VerticalDivider(
               color: klines,
               thickness: 1,
               indent: 1,
             ),
-            SizedBox(
-              width: 30.0,
+            const SizedBox(
+              width: 100.0,
             ),
             Column(
               children: [
                 Text(
-                  "dikshant sharma",
+                  "name",
                   textAlign: TextAlign.left,
                   style: GoogleFonts.poppins(
                     color: ksecondarytext,
-                    fontSize: 35.0,
+                    fontSize: 40.0,
                   ),
                 ),
                 Text(
-                  "name hour",
+                  "times",
                   textAlign: TextAlign.left,
                   style: GoogleFonts.poppins(
                     color: ksecondarytext,
@@ -49,7 +47,7 @@ class writer_deatil extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

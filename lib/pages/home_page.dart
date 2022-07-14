@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:revrocket/constants.dart';
+import 'package:revrocket/models/constants.dart';
 
 import '../components/top_navbar.dart';
 
@@ -18,12 +18,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       // extendBodyBehindAppBar: true,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100.0),
+        preferredSize: Size.fromHeight(70.0),
         child: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,
           elevation: 0.0,
-          title: TopNavBar(screen: screen, name: name),
+          flexibleSpace: TopNavBar(screen: screen, name: name),
           leadingWidth: 100.0,
           leading: Reuselogo(
             onpress: () {},
@@ -71,13 +71,14 @@ class _ReuselogoState extends State<Reuselogo> {
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
       ),
-      child: SafeArea(
+      child: Container(
+        margin: EdgeInsets.only(top: 10.0),
         child: InkWell(
           enableFeedback: false,
           onTap: widget.onpress,
           child: Image.asset(
             'assets/logo.png',
-            fit: BoxFit.cover,
+            fit: BoxFit.fitHeight,
           ),
         ),
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:revrocket/constants.dart';
+import 'package:revrocket/models/constants.dart';
 
 // ignore: must_be_immutable
 class Hometext extends StatefulWidget {
@@ -20,7 +20,8 @@ class _HometextState extends State<Hometext> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      margin: EdgeInsets.only(top: 20.0),
+      alignment: Alignment.center,
+      margin: EdgeInsets.only(top: ishover ? 10.0 : 20.0),
       duration: const Duration(milliseconds: 100),
       child: Theme(
         data: Theme.of(context).copyWith(
@@ -36,7 +37,13 @@ class _HometextState extends State<Hometext> {
             });
           },
           child: Container(
+            // alignment: Alignment.center,
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
             decoration: const BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                      spreadRadius: 5, blurRadius: 5, color: Colors.black12)
+                ],
                 color: kdiscussionpage,
                 borderRadius: BorderRadius.all(Radius.circular(15))),
             child: Text(
