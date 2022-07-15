@@ -36,6 +36,12 @@ dependencies:
   google_fonts: ^3.0.1
   flutter_svg: ^1.1.1+1
   carousel_slider: ^4.1.1
+  firebase_storage: ^10.3.2
+  cached_network_image: ^2.1.0+1
+  shared_preferences: ^2.0.15
+  cloud_firestore: ^3.3.0
+  firebase_messaging: ^12.0.0
+  flutter_signin_button: ^2.0.0
 
 dev_dependencies:
   flutter_test:

@@ -40,6 +40,10 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+  <script src="main.dart.js" type="application/javascript"></script>
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
@@ -54,5 +58,20 @@
       });
     });
   </script>
+
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyA-ZqqZhtu7MvnY0M79sr5wYcVJxBLsdD4",
+    authDomain: "revenue-rock.firebaseapp.com",
+    projectId: "revenue-rock",
+    storageBucket: "revenue-rock.appspot.com",
+    messagingSenderId: "829022495296",
+    appId: "1:829022495296:web:cebda4295c7732363275a5",
+    measurementId: "G-M5PKYTTFYE"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 </body>
 </html>

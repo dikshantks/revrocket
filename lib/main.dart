@@ -3,7 +3,6 @@ import 'package:revrocket/pages/home_page.dart';
 import 'package:revrocket/models/themes.dart';
 
 void main() {
-  // Paint.enableDithering = true;
   runApp(const MyApp());
 }
 
