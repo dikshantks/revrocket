@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:revrocket/components/textfor_page1.dart';
 import 'package:revrocket/models/constants.dart';
-import 'package:revrocket/components/home_text.dart';
 import 'package:revrocket/components/learnpage_ara.dart';
 import 'package:revrocket/pages/stock2.dart';
 import '../components/writer_detail.dart';
@@ -40,7 +39,7 @@ class _LearnpageState extends State<Learnpage> {
         automaticallyImplyLeading: false,
         elevation: 0.0,
         backgroundColor: kprimaryscaffhold,
-        leadingWidth: 80.0,
+        leadingWidth: 100.0,
         leading: Reuselogo(
           onpress: () {
             Navigator.pop(context);
@@ -83,7 +82,7 @@ class stock_learn1 extends StatelessWidget {
             flex: 3,
             child: Padding(
               padding: const EdgeInsets.only(
-                top: 50.0,
+                // top: 50.0,
                 left: 30.0,
                 right: 70.0,
                 bottom: 20.0,
@@ -99,23 +98,23 @@ class stock_learn1 extends StatelessWidget {
                     ),
                     subheadings(
                       key: headLineKeyList[0],
-                      subheading: subheading_arr[0],
+                      subheading: Subheading_arr[0],
                     ),
                     Content(
                       content: paragraph1,
                     ),
                     subheadings(
-                        key: headLineKeyList[1], subheading: subheading_arr[1]),
+                        key: headLineKeyList[1], subheading: Subheading_arr[1]),
                     Content(
                       content: para2,
                     ),
                     subheadings(
-                        key: headLineKeyList[2], subheading: subheading_arr[2]),
+                        key: headLineKeyList[2], subheading: Subheading_arr[2]),
                     Content(
                       content: para2,
                     ),
                     Container(
-                      color: Colors.amber,
+                      // color: Colors.amber,
                       child: IconButton(
                           icon: Icon(Icons.abc_outlined),
                           onPressed: () {
@@ -138,15 +137,14 @@ class stock_learn1 extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-              alignment: Alignment.centerLeft,
+              // alignment: Alignment.centerLeft,
               padding: EdgeInsets.only(right: 10.0),
-              color: Colors.pink,
               child: Column(
                 children: [
                   Center(
                     child: FittedBox(
                       child: Text(
-                        'Table of Content',
+                        'Table of content',
                         style: GoogleFonts.poppins(
                             color: kprimarytext, fontSize: 50.0),
                       ),
@@ -154,12 +152,13 @@ class stock_learn1 extends StatelessWidget {
                   ),
                   ListView.builder(
                       shrinkWrap: true,
-                      itemCount: subheading_arr.length,
+                      itemCount: Subheading_arr.length,
                       itemBuilder: (context, index) {
                         return subheading_tile(
-                            index: index,
-                            subheading: subheading_arr[index],
-                            headLineKeyList: headLineKeyList);
+                          index: index,
+                          subheading: Subheading_arr[index],
+                          headLineKeyList: headLineKeyList,
+                        );
                       })
                 ],
               ),
@@ -194,17 +193,11 @@ class subheading_tile extends StatelessWidget {
             duration: const Duration(seconds: 1));
       },
       title: Container(
-        color: kErrorColor,
-        height: 70.0,
         margin: EdgeInsets.only(bottom: 10.0, top: 10.0),
-        child: FittedBox(
-          child: Text(
-            subheading,
-            style: GoogleFonts.poppins(
-                fontSize: textsize1,
-                fontWeight: FontWeight.w400,
-                color: kprimarytext),
-          ),
+        child: Text(
+          subheading,
+          style: GoogleFonts.poppins(
+              fontSize: 15, fontWeight: FontWeight.w400, color: kprimarytext),
         ),
       ),
     );

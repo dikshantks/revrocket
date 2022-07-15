@@ -11,8 +11,9 @@ class Mainscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imagepath = [
-      "/home/dikshant/Desktop/revenuerokcet/revrocket/assets/image1.png",
-      "/home/dikshant/Desktop/revenuerokcet/revrocket/assets/informative1.png"
+      "https://firebasestorage.googleapis.com/v0/b/revenue-rock.appspot.com/o/1.png?alt=media&token=600dfb03-f1cd-4e82-9bca-be7a225c7d77",
+      "https://firebasestorage.googleapis.com/v0/b/revenue-rock.appspot.com/o/5.png?alt=media&token=b98d4331-82bc-4f10-b4b4-a81d48545e05",
+      "https://firebasestorage.googleapis.com/v0/b/revenue-rock.appspot.com/o/6.png?alt=media&token=70952be9-f18d-461b-a20b-7e75a4d550d4"
     ];
     return Expanded(
       flex: 1,
@@ -33,7 +34,7 @@ class Mainscreen extends StatelessWidget {
                 child: CarouselSlider.builder(
                   options: CarouselOptions(
                     autoPlay: true,
-                    reverse: true,
+                    // reverse: true,
                     autoPlayInterval: Duration(seconds: 2),
                   ),
                   itemCount: imagepath.length,
@@ -74,8 +75,8 @@ class Image_builder extends StatelessWidget {
     return Container(
       width: 900.0,
       margin: EdgeInsets.symmetric(horizontal: 30.0),
-      color: Colors.red,
-      child: Image.asset(url, fit: BoxFit.cover),
+      // color: Colors.red,
+      child: Image.network(url, fit: BoxFit.contain),
     );
   }
 }

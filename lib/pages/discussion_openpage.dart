@@ -116,7 +116,10 @@ class discuss_openscreen extends StatelessWidget {
                   // color: Colors.yellow,
                   child: ListView(
                     children: [
-                      discussion_bubble(palet_size: paletSize),
+                      // discussion_bubble(
+                      //   palet_size: paletSize,
+                      //   question: "sdfs",
+                      // ),
                     ],
                   ),
                 ),

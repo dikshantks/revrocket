@@ -39,7 +39,7 @@ class _HometextState extends State<Hometext> {
           child: Container(
             // alignment: Alignment.center,
             padding: EdgeInsets.symmetric(horizontal: 10.0),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
                       spreadRadius: 5, blurRadius: 5, color: Colors.black12)

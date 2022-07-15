@@ -4,9 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 import '../models/constants.dart';
 
 class discussion_user extends StatelessWidget {
-  const discussion_user({
+  discussion_user({
     Key? key,
+    required this.name,
   }) : super(key: key);
+
+  String name;
 
   @override
   Widget build(BuildContext context) {

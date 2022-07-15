@@ -1,10 +1,15 @@
 // ignore_for_file: must_be_immutable, camel_case_types, prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:revrocket/components/home_text.dart';
+import 'package:revrocket/helpers/firebaseclaas.dart';
 import 'package:revrocket/models/constants.dart';
 import 'package:revrocket/components/disucssion_user.dart';
+import 'package:revrocket/models/user.dart';
 import 'package:revrocket/pages/home_page.dart';
 
 import '../components/discussuion_bubble.dart';
@@ -47,24 +52,6 @@ class Discussion_page extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 10.0),
-                  height: 50.0,
-                  width: 50.0,
-                  decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10.0),
-                  height: 50.0,
-                  width: 50.0,
-                  decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Row(
                     children: [
                       Text("HI , USER"),
@@ -91,6 +78,8 @@ class discuss_mainscreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
+    var firebaseinstance = FireStoreDataBase();
+
     final paletSize = size.height * 0.3;
     return Column(
       children: [
@@ -114,17 +103,7 @@ class discuss_mainscreen extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.only(top: 20.0),
                   // color: Colors.yellow,
-                  child: ListView(
-                    children: [
-                      discussion_bubble(palet_size: paletSize),
-                      discussion_bubble(palet_size: paletSize),
-                      discussion_bubble(palet_size: paletSize),
-                      discussion_bubble(palet_size: paletSize),
-                      discussion_bubble(palet_size: paletSize),
-                      discussion_bubble(palet_size: paletSize),
-                      discussion_bubble(palet_size: paletSize),
-                    ],
-                  ),
+                  child: firebaseinstance.buildkaro(),
                 ),
               ),
               VerticalDivider(
@@ -136,8 +115,9 @@ class discuss_mainscreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Container(
-                    // color: Colors.blue,
-                    ),
+                  // color: Colors.blue,
+                  child: Center(child: SafeArea(child: signin_google())),
+                ),
               )
             ],
           ),
@@ -146,6 +126,40 @@ class discuss_mainscreen extends StatelessWidget {
           width: double.infinity,
           height: 50.0,
         ),
+      ],
+    );
+  }
+}
+
+class signin_google extends StatelessWidget {
+  const signin_google({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var usernow = UserModel();
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          child: FittedBox(
+            child: Text(
+              "sign in to answer or ask question",
+              style: GoogleFonts.poppins(
+                color: ksecondarytext,
+                fontSize: 20.0,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 20.0,
+        ),
+        SignInButton(Buttons.GoogleDark, onPressed: () {
+          usernow.createUser(name: "dg");
+        }),
       ],
     );
   }

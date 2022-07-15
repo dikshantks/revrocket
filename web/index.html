@@ -26,10 +26,12 @@
   <meta name="apple-mobile-web-app-title" content="revrocket">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
+  <meta name="google-signin-client_id" content="829022495296-lcflj7lc3edtv424l6cssu8btnar9gvl.apps.googleusercontent.com.apps.googleusercontent.com">
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>revrocket</title>
+  <title>Revenue rocket</title>
   <link rel="manifest" href="manifest.json">
 
   <script>
@@ -41,7 +43,9 @@
 </head>
 <body>
 
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
 
   <script src="main.dart.js" type="application/javascript"></script>
   <script>
@@ -59,8 +63,16 @@
     });
   </script>
 
-<script>
-  var firebaseConfig = {
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
     apiKey: "AIzaSyA-ZqqZhtu7MvnY0M79sr5wYcVJxBLsdD4",
     authDomain: "revenue-rock.firebaseapp.com",
     projectId: "revenue-rock",
@@ -71,7 +83,8 @@
   };
 
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
 </script>
 </body>
 </html>

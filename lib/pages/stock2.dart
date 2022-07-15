@@ -94,18 +94,18 @@ class stock_learn1 extends StatelessWidget {
                     ),
                     subheadings(
                       key: headLineKeyList[0],
-                      subheading: subheading_arr[0],
+                      subheading: Subheading_arr[0],
                     ),
                     Content(
                       content: paragraph1,
                     ),
                     subheadings(
-                        key: headLineKeyList[1], subheading: subheading_arr[1]),
+                        key: headLineKeyList[1], subheading: Subheading_arr[1]),
                     Content(
                       content: para2,
                     ),
                     subheadings(
-                        key: headLineKeyList[2], subheading: subheading_arr[2]),
+                        key: headLineKeyList[2], subheading: Subheading_arr[2]),
                     Content(
                       content: para2,
                     ),
@@ -126,8 +126,7 @@ class stock_learn1 extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-              padding:
-                  EdgeInsets.symmetric(horizontal: 20.0, vertical: textsize1),
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1),
               // color: Colors.pink,
               child: Column(
                 children: [
@@ -140,11 +139,11 @@ class stock_learn1 extends StatelessWidget {
                   ),
                   ListView.builder(
                       shrinkWrap: true,
-                      itemCount: subheading_arr.length,
+                      itemCount: Subheading_arr.length,
                       itemBuilder: (context, index) {
                         return subheading_tile(
                             index: index,
-                            subheading: subheading_arr[index],
+                            subheading: Subheading_arr[index],
                             headLineKeyList: headLineKeyList);
                       })
                 ],
@@ -183,9 +182,7 @@ class subheading_tile extends StatelessWidget {
         child: Text(
           subheading,
           style: GoogleFonts.poppins(
-              fontSize: textsize1,
-              fontWeight: FontWeight.w500,
-              color: kprimarytext),
+              fontSize: 1, fontWeight: FontWeight.w500, color: kprimarytext),
         ),
       ),
     );

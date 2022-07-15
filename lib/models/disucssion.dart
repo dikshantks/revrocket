@@ -1,10 +1,13 @@
-class Discussion {
-  final String title, date, content;
-  final int like = 0, dislike = 0, answers = 0;
+// class Discussion {
+//   final String title, date, content , user;
+//   final int upvotes = 0, dowvotes = 0, answers = 0;
 
-  Discussion({
-    this.title = "",
-    this.date = '',
-    this.content = '',
-  });
-}
+
+//   anser = { anwer , time , and the user , }
+
+//   Discussion({
+//     this.title = "",
+//     this.date = '',
+//     this.content = '',
+//   });
+// }

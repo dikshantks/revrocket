@@ -1,17 +1,26 @@
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:revrocket/components/home_text.dart';
 import 'package:revrocket/models/constants.dart';
 import 'package:revrocket/components/disucssion_user.dart';
-import 'package:revrocket/pages/home_page.dart';
 
 class discussion_bubble extends StatelessWidget {
-  const discussion_bubble({
-    Key? key,
-    required this.palet_size,
-  }) : super(key: key);
+  discussion_bubble(
+      {Key? key,
+      required this.palet_size,
+      required this.question,
+      required this.descrition,
+      required this.name})
+      : super(key: key);
 
   final double palet_size;
+
+  String name;
+
+  String question;
+
+  String descrition;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +43,9 @@ class discussion_bubble extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
                 color: kprimaryscaffhold,
-                child: discussion_user(),
+                child: discussion_user(
+                  name: name,
+                ),
               ),
             ),
             Expanded(
@@ -46,7 +57,7 @@ class discussion_bubble extends StatelessWidget {
                   children: [
                     SizedBox(
                       child: Text(
-                        "nagdfgdfgdgfsdfsdme",
+                        question,
                         textAlign: TextAlign.left,
                         style: GoogleFonts.poppins(
                           color: ksecondarytext,
@@ -57,7 +68,7 @@ class discussion_bubble extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       child: Text(
-                        "fsdjfek;kljdflk;fje;lfkej;lsdjfe;jl;srjf;jxl;kjefroerjfldkjerlfkej",
+                        descrition,
                         textAlign: TextAlign.left,
                         style: GoogleFonts.poppins(
                           color: ksecondarytext,
