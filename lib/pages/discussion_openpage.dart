@@ -3,14 +3,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
-import '../UI models/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:revrocket/UI%20models/constants.dart';
+import 'package:revrocket/pages/discussion_forum.dart';
+
+import 'package:revrocket/pages/discussion_openpage.dart';
 import 'package:revrocket/pages/home_page.dart';
 
-class Discussion_openpage extends StatelessWidget {
-  Discussion_openpage({Key? key, required this.screen}) : super(key: key);
+class discuss_openscreen extends StatelessWidget {
+  discuss_openscreen({
+    Key? key,
+  }) : super(key: key);
 
-  Size screen;
-
+//  Size screen = MediaQuery.of(context).size;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +39,8 @@ class Discussion_openpage extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10.0),
+                  padding: EdgeInsets.symmetric(horizontal: 30.0),
+                  margin: EdgeInsets.symmetric(horizontal: 20.0),
                   height: 50.0,
                   width: 50.0,
                   decoration: BoxDecoration(
@@ -45,8 +51,8 @@ class Discussion_openpage extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Row(
-                    children: const [
-                      Text("HI , LOLO"),
+                    children: [
+                      Text("HI , USER"),
                       Icon(Icons.text_rotation_angledown),
                     ],
                   ),
@@ -56,32 +62,27 @@ class Discussion_openpage extends StatelessWidget {
           ],
         ),
       ),
-      body: discuss_openscreen(),
+      body: discuss_mainscreen(),
     );
   }
 }
 
-class discuss_openscreen extends StatelessWidget {
-  const discuss_openscreen({
+class discuss_mainscreen extends StatelessWidget {
+  const discuss_mainscreen({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // final size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
 
-    // final paletSize = size.height * 0.3;
+    final paletSize = size.height * 0.3;
     return Column(
       children: [
         Expanded(
           child: Row(
             children: [
-              Expanded(
-                flex: 1,
-                child: Container(
-                    // color: Colors.blue,
-                    ),
-              ),
+              comingSoonScreen(paletSize: paletSize),
               VerticalDivider(
                 indent: 20,
                 endIndent: 20,
@@ -89,25 +90,11 @@ class discuss_openscreen extends StatelessWidget {
                 color: klines,
               ),
               Expanded(
-                flex: 3,
+                flex: 4,
                 child: Container(
                   padding: EdgeInsets.only(top: 20.0),
-                  color: Colors.yellow,
-                  child: ListView(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 30.0),
-                        child: SignInButton(Buttons.Apple, onPressed: () {}),
-                      ),
-                    ],
-                  ),
+                  // color: Colors.yellow,
                 ),
-              ),
-              VerticalDivider(
-                indent: 20,
-                endIndent: 20,
-                thickness: 0.5,
-                color: klines,
               ),
             ],
           ),

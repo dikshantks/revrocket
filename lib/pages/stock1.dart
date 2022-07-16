@@ -151,15 +151,16 @@ class stock_learn1 extends StatelessWidget {
                     ),
                   ),
                   ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: Subheading_arr.length,
-                      itemBuilder: (context, index) {
-                        return subheading_tile(
-                          index: index,
-                          subheading: Subheading_arr[index],
-                          headLineKeyList: headLineKeyList,
-                        );
-                      })
+                    shrinkWrap: true,
+                    itemCount: Subheading_arr.length,
+                    itemBuilder: (context, index) {
+                      return subheading_tile(
+                        index: index,
+                        subheading: Subheading_arr[index],
+                        headLineKeyList: headLineKeyList,
+                      );
+                    },
+                  ),
                 ],
               ),
             ),

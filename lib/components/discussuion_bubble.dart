@@ -4,29 +4,33 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../UI models/constants.dart';
 import 'package:revrocket/components/disucssion_user.dart';
-import 'package:revrocket/pages/discussion_openpage.dart';
 
-class discussion_bubble extends StatelessWidget {
-  discussion_bubble(
-      {Key? key,
-      required this.palet_size,
-      required this.question,
-      required this.descrition,
-      required this.name})
-      : super(key: key);
+class discussion_bubble extends StatefulWidget {
+  discussion_bubble({
+    Key? key,
+    required this.palet_size,
+    required this.question,
+    required this.descrition,
+    required this.name,
+    required this.onpress,
+  }) : super(key: key);
 
   final double palet_size;
-
   String name;
-
   String question;
-
   String descrition;
 
+  var onpress;
+
+  @override
+  State<discussion_bubble> createState() => _discussion_bubbleState();
+}
+
+class _discussion_bubbleState extends State<discussion_bubble> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: widget.onpress,
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
         decoration: BoxDecoration(
@@ -34,7 +38,7 @@ class discussion_bubble extends StatelessWidget {
           borderRadius: BorderRadius.circular(35.0),
           boxShadow: const [BoxShadow(blurRadius: 10.0)],
         ),
-        height: palet_size,
+        height: widget.palet_size,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -42,7 +46,7 @@ class discussion_bubble extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
                 child: discussion_user(
-                  name: name,
+                  name: widget.name,
                 ),
               ),
             ),
@@ -56,7 +60,7 @@ class discussion_bubble extends StatelessWidget {
                     Container(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        question,
+                        widget.question,
                         style: GoogleFonts.poppins(
                           color: ksecondarytext,
                           fontSize: 30.0,
@@ -66,7 +70,7 @@ class discussion_bubble extends StatelessWidget {
                     Container(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        descrition,
+                        widget.descrition,
                         style: GoogleFonts.poppins(
                           color: ksecondarytext,
                           fontSize: 20.0,
