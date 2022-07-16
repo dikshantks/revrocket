@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:revrocket/models/constants.dart';
@@ -40,17 +42,16 @@ class _HometextState extends State<Hometext> {
             // alignment: Alignment.center,
             padding: EdgeInsets.symmetric(horizontal: 10.0),
             decoration: BoxDecoration(
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                       spreadRadius: 5, blurRadius: 5, color: Colors.black12)
                 ],
                 color: kdiscussionpage,
-                borderRadius: BorderRadius.all(Radius.circular(15))),
+                borderRadius: const BorderRadius.all(Radius.circular(15))),
             child: Text(
               widget.heading,
               style: GoogleFonts.poppins(
                 fontSize: 30.0,
-                // ignore: prefer_const_constructors
                 color: kprimarytext,
               ),
             ),

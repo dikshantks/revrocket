@@ -4,15 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:revrocket/components/home_text.dart';
 import 'package:revrocket/helpers/firebaseclaas.dart';
 import 'package:revrocket/models/constants.dart';
-import 'package:revrocket/components/disucssion_user.dart';
-import 'package:revrocket/models/user.dart';
 import 'package:revrocket/pages/home_page.dart';
-
-import '../components/discussuion_bubble.dart';
 
 class Discussion_page extends StatelessWidget {
   Discussion_page({Key? key, required this.screen}) : super(key: key);
@@ -138,7 +132,7 @@ class signin_google extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var usernow = UserModel();
+    // var usernow = UserModel();
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -158,7 +152,7 @@ class signin_google extends StatelessWidget {
           height: 20.0,
         ),
         SignInButton(Buttons.GoogleDark, onPressed: () {
-          usernow.createUser(name: "dg");
+          // usernow.createUser(name: "dg");
         }),
       ],
     );

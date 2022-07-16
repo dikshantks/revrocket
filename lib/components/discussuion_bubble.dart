@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, camel_case_types, must_be_immutable, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,7 +33,7 @@ class discussion_bubble extends StatelessWidget {
         decoration: BoxDecoration(
           color: kdiscussionpage,
           borderRadius: BorderRadius.circular(35.0),
-          boxShadow: [BoxShadow(blurRadius: 10.0)],
+          boxShadow: const [BoxShadow(blurRadius: 10.0)],
         ),
         height: palet_size,
         child: Column(
@@ -65,7 +65,7 @@ class discussion_bubble extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: double.infinity,
                       child: Text(
                         descrition,

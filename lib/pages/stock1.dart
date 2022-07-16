@@ -114,7 +114,7 @@ class stock_learn1 extends StatelessWidget {
                       content: para2,
                     ),
                     Container(
-                      // color: Colors.amber,
+                      color: Colors.amber,
                       child: IconButton(
                           icon: Icon(Icons.abc_outlined),
                           onPressed: () {

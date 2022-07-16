@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
+// ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables, prefer_const_constructors
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';

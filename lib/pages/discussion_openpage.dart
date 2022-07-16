@@ -1,13 +1,8 @@
 // ignore_for_file: must_be_immutable, camel_case_types, prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:revrocket/components/home_text.dart';
 import 'package:revrocket/models/constants.dart';
-import 'package:revrocket/components/disucssion_user.dart';
 import 'package:revrocket/pages/home_page.dart';
-
-import '../components/discussuion_bubble.dart';
 
 class Discussion_openpage extends StatelessWidget {
   Discussion_openpage({Key? key, required this.screen}) : super(key: key);
@@ -66,7 +61,7 @@ class Discussion_openpage extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Row(
-                    children: [
+                    children: const [
                       Text("HI , USER"),
                       Icon(Icons.text_rotation_angledown),
                     ],
@@ -89,9 +84,9 @@ class discuss_openscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    // final size = MediaQuery.of(context).size;
 
-    final paletSize = size.height * 0.3;
+    // final paletSize = size.height * 0.3;
     return Column(
       children: [
         Expanded(
@@ -139,7 +134,7 @@ class discuss_openscreen extends StatelessWidget {
             ],
           ),
         ),
-        Container(
+        SizedBox(
           width: double.infinity,
           height: 50.0,
         ),
