@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../models/constants.dart';
+import '../UI models/constants.dart';
 
 class writer_deatil extends StatelessWidget {
   const writer_deatil({

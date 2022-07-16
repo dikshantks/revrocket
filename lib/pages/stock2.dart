@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:revrocket/components/textfor_page1.dart';
-import 'package:revrocket/models/constants.dart';
+import '../UI models/constants.dart';
 import 'package:revrocket/components/home_text.dart';
 import 'package:revrocket/components/learnpage_ara.dart';
 import '../components/writer_detail.dart';

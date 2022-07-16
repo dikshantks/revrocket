@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:revrocket/helpers/firebaseclaas.dart';
-import 'package:revrocket/models/constants.dart';
+import 'package:revrocket/UI%20models/constants.dart';
+
+import 'package:revrocket/pages/discussion_openpage.dart';
 import 'package:revrocket/pages/home_page.dart';
 
 class Discussion_page extends StatelessWidget {
@@ -70,11 +71,9 @@ class discuss_mainscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    // final size = MediaQuery.of(context).size;
 
-    var firebaseinstance = FireStoreDataBase();
-
-    final paletSize = size.height * 0.3;
+    // final paletSize = size.height * 0.3;
     return Column(
       children: [
         Expanded(
@@ -97,7 +96,6 @@ class discuss_mainscreen extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.only(top: 20.0),
                   // color: Colors.yellow,
-                  child: firebaseinstance.buildkaro(),
                 ),
               ),
               VerticalDivider(
@@ -109,14 +107,19 @@ class discuss_mainscreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Container(
-                  // color: Colors.blue,
-                  child: Center(child: SafeArea(child: signin_google())),
+                  color: Colors.blue,
+                  child: Center(
+                      child: Container(
+                    child: Column(
+                      children: [Text("hello "), TextFormField()],
+                    ),
+                  )),
                 ),
               )
             ],
           ),
         ),
-        Container(
+        SizedBox(
           width: double.infinity,
           height: 50.0,
         ),
@@ -125,11 +128,16 @@ class discuss_mainscreen extends StatelessWidget {
   }
 }
 
-class signin_google extends StatelessWidget {
-  const signin_google({
+class signin_google extends StatefulWidget {
+  signin_google({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<signin_google> createState() => _signin_googleState();
+}
+
+class _signin_googleState extends State<signin_google> {
   @override
   Widget build(BuildContext context) {
     // var usernow = UserModel();
@@ -152,7 +160,12 @@ class signin_google extends StatelessWidget {
           height: 20.0,
         ),
         SignInButton(Buttons.GoogleDark, onPressed: () {
-          // usernow.createUser(name: "dg");
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => discuss_openscreen(),
+            ),
+          );
         }),
       ],
     );

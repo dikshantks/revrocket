@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:revrocket/models/constants.dart';
+import '../UI models/constants.dart';
 
 import '../components/top_navbar.dart';
 
@@ -44,7 +44,6 @@ class HomePage extends StatelessWidget {
             SizedBox(
               width: screen.width,
               height: screen.height * 0.09,
-              // color: Colors.amber,
             )
           ],
         ),

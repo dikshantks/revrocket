@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../models/constants.dart';
+import '../UI models/constants.dart';
 
 class Headline1 extends StatelessWidget {
   Headline1({Key? key, this.headline1}) : super(key: key);

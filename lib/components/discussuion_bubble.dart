@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:revrocket/models/constants.dart';
+import '../UI models/constants.dart';
 import 'package:revrocket/components/disucssion_user.dart';
+import 'package:revrocket/pages/discussion_openpage.dart';
 
 class discussion_bubble extends StatelessWidget {
   discussion_bubble(
@@ -25,9 +26,7 @@ class discussion_bubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        print("c");
-      },
+      onTap: () {},
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
         decoration: BoxDecoration(
@@ -41,8 +40,7 @@ class discussion_bubble extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
-                color: kprimaryscaffhold,
+                margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
                 child: discussion_user(
                   name: name,
                 ),
@@ -51,25 +49,24 @@ class discussion_bubble extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0),
+                margin: EdgeInsets.symmetric(horizontal: 30.0, vertical: 1.0),
                 // color: kErrorColor,
                 child: Column(
                   children: [
-                    SizedBox(
+                    Container(
+                      alignment: Alignment.topLeft,
                       child: Text(
                         question,
-                        textAlign: TextAlign.left,
                         style: GoogleFonts.poppins(
                           color: ksecondarytext,
                           fontSize: 30.0,
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: double.infinity,
+                    Container(
+                      alignment: Alignment.topLeft,
                       child: Text(
                         descrition,
-                        textAlign: TextAlign.left,
                         style: GoogleFonts.poppins(
                           color: ksecondarytext,
                           fontSize: 20.0,
@@ -81,7 +78,7 @@ class discussion_bubble extends StatelessWidget {
               ),
             ),
             Divider(
-              thickness: 1,
+              thickness: 1.5,
             ),
             Expanded(
               child: Container(

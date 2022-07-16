@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:revrocket/components/home_text.dart';
-import 'package:revrocket/models/constants.dart';
 import 'package:revrocket/pages/stock1.dart';
 
 import '../pages/discussion_forum.dart';

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:revrocket/models/constants.dart';
+import '../UI models/constants.dart';
 
 // ignore: must_be_immutable
 class Hometext extends StatefulWidget {
