@@ -13,7 +13,10 @@ import 'package:revrocket/pages/home_page.dart';
 class discuss_openscreen extends StatelessWidget {
   discuss_openscreen({
     Key? key,
+    required this.question,
   }) : super(key: key);
+
+  String question;
 
 //  Size screen = MediaQuery.of(context).size;
   @override
@@ -62,15 +65,18 @@ class discuss_openscreen extends StatelessWidget {
           ],
         ),
       ),
-      body: discuss_mainscreen(),
+      body: discuss_mainscreen(question: question),
     );
   }
 }
 
 class discuss_mainscreen extends StatelessWidget {
-  const discuss_mainscreen({
+  discuss_mainscreen({
     Key? key,
+    this.question,
   }) : super(key: key);
+
+  String? question = "";
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +99,10 @@ class discuss_mainscreen extends StatelessWidget {
                 flex: 4,
                 child: Container(
                   padding: EdgeInsets.only(top: 20.0),
-                  // color: Colors.yellow,
+                  child: Text(
+                    question!,
+                    style: TextStyle(fontSize: 40.0, color: Colors.white),
+                  ),
                 ),
               ),
             ],

@@ -13,12 +13,15 @@ class discussion_bubble extends StatefulWidget {
     required this.descrition,
     required this.name,
     required this.onpress,
+    required this.time,
   }) : super(key: key);
 
   final double palet_size;
   String name;
   String question;
   String descrition;
+
+  String time;
 
   var onpress;
 
@@ -47,6 +50,7 @@ class _discussion_bubbleState extends State<discussion_bubble> {
                 margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
                 child: discussion_user(
                   name: widget.name,
+                  time: widget.time,
                 ),
               ),
             ),
