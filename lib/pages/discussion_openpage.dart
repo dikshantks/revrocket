@@ -13,7 +13,13 @@ import 'package:revrocket/pages/home_page.dart';
 class discuss_openscreen extends StatelessWidget {
   discuss_openscreen({
     Key? key,
+    required this.question,
+    required this.listAnswer,
   }) : super(key: key);
+
+  String question;
+
+  List<Map<String, dynamic>> listAnswer;
 
 //  Size screen = MediaQuery.of(context).size;
   @override
@@ -62,15 +68,24 @@ class discuss_openscreen extends StatelessWidget {
           ],
         ),
       ),
-      body: discuss_mainscreen(),
+      body: discuss_mainscreen(
+        question: question,
+        listAnswer: listAnswer,
+      ),
     );
   }
 }
 
 class discuss_mainscreen extends StatelessWidget {
-  const discuss_mainscreen({
+  discuss_mainscreen({
     Key? key,
+    this.question,
+    required this.listAnswer,
   }) : super(key: key);
+
+  String? question = "";
+
+  List<Map<String, dynamic>> listAnswer;
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +108,26 @@ class discuss_mainscreen extends StatelessWidget {
                 flex: 4,
                 child: Container(
                   padding: EdgeInsets.only(top: 20.0),
-                  // color: Colors.yellow,
+                  child: Column(
+                    children: [
+                      Text(
+                        question!,
+                        style: TextStyle(fontSize: 40.0, color: Colors.white),
+                      ),
+                      ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: listAnswer.length,
+                          itemBuilder: (context, index) {
+                            return ListTile(
+                              title: Text(
+                                listAnswer[index]['answer'],
+                                style: TextStyle(
+                                    fontSize: 40.0, color: Colors.white),
+                              ),
+                            );
+                          })
+                    ],
+                  ),
                 ),
               ),
             ],

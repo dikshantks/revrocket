@@ -1,15 +1,15 @@
 // ignore_for_file: must_be_immutable, camel_case_types, prefer_const_constructors, non_constant_identifier_names
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:revrocket/UI%20models/constants.dart';
 import 'package:revrocket/components/discussuion_bubble.dart';
-import 'package:revrocket/components/home_text.dart';
-
 import 'package:revrocket/pages/discussion_openpage.dart';
 import 'package:revrocket/pages/home_page.dart';
+import 'package:revrocket/tests/test_class.dart';
 
 class Discussion_page extends StatelessWidget {
   Discussion_page({Key? key, required this.screen}) : super(key: key);
@@ -76,6 +76,56 @@ class discuss_mainscreen extends StatefulWidget {
 }
 
 class _discuss_mainscreenState extends State<discuss_mainscreen> {
+  List<DiscusionsList> sample = [
+    DiscusionsList(
+        dateAdded: 'march lol',
+        username: "user1",
+        question: "qui1",
+        description: "desc1 ",
+        docID: "uid1",
+        listAnswer: [
+          {
+            "answer": "yo",
+            "timeofpublish": "sfdsf",
+            "uid": "qwe",
+            'username': "user1",
+          },
+          {
+            "answer": "7878",
+            "timeofpublish": "665656",
+            "uid": "qwe",
+            'username': "user55",
+          }
+        ]),
+    DiscusionsList(
+        dateAdded: 'yogoo',
+        username: "user2",
+        question: "qui2",
+        description: "desc2 ",
+        docID: "uid2",
+        listAnswer: [
+          {
+            "answer": "yo",
+            "timeofpublish": "sfdsf",
+            "uid": "qwe",
+            'username': "user2",
+          }
+        ]),
+    DiscusionsList(
+        username: "user3",
+        question: "qui3",
+        description: "desc3 ",
+        docID: "uid3",
+        listAnswer: [
+          {
+            "answer": "yo",
+            "timeofpublish": "sfdsf",
+            "uid": "qwe",
+            'username': "user5",
+          }
+        ])
+  ];
+
   bool isloggedin = false;
   @override
   Widget build(BuildContext context) {
@@ -99,18 +149,24 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
                   padding: EdgeInsets.only(top: 20.0),
                   child: ListView.builder(
                     shrinkWrap: true,
-                    itemCount: 6,
+                    itemCount: sample.length,
                     itemBuilder: (context, index) {
                       return discussion_bubble(
-                        descrition: "ddfg",
-                        name: "sfsdf",
+                        listAnswer: sample[index].listAnswer,
+                        time: sample[index].dateAdded,
+                        question: sample[index].question,
+                        descrition: sample[index].description,
+                        name: sample[index].username,
                         palet_size: paletSize,
-                        question: index.toString(),
                         onpress: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => discuss_openscreen()),
+                              builder: (context) => discuss_openscreen(
+                                question: sample[index].question,
+                                listAnswer: sample[index].listAnswer,
+                              ),
+                            ),
                           );
                         },
                       );
@@ -184,37 +240,49 @@ class afterLogin extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text("write your quiestion"),
-        TextField(
-          autocorrect: false,
-          style: TextStyle(color: Colors.black),
-          decoration: InputDecoration(
-            fillColor: Colors.grey.shade100,
-            filled: true,
-            hintText: "am i dumb?",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-        ),
-        SizedBox(width: 20.0),
-        Text("decribe"),
-        SizedBox(
-          height: 200.0,
-          child: TextFormField(
-            expands: true,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+          child: TextField(
             autocorrect: false,
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
-              fillColor: Colors.grey.shade100,
+              fillColor: ksecondarytext,
               filled: true,
-              hintText:
-                  "no seriously this website took me a whoole month \n and why did i chose flutter on web stack for this ",
+              hintText: "am i dumb?",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
           ),
         ),
+        SizedBox(width: 20.0),
+        Text("decribe"),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 20.0),
+          height: 200.0,
+          child: TextFormField(
+            minLines: null,
+            maxLines: null,
+            expands: true,
+            autocorrect: false,
+            textAlign: TextAlign.left,
+            style: TextStyle(color: Colors.black),
+            decoration: InputDecoration(
+              fillColor: ksecondarytext,
+              filled: true,
+              helperMaxLines: 2,
+              hintText:
+                  "no seriously this website took me a whoole month  and why did i chose \nflutter on web stack for this ",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+        ),
+        Container(
+            margin: EdgeInsets.symmetric(vertical: 10.0),
+            height: 70.0,
+            child: DiscussionTexts(heading: "Submit", onpress: () {}))
       ],
     );
   }
@@ -309,8 +377,8 @@ class _DiscussionTextsState extends State<DiscussionTexts> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       alignment: Alignment.center,
-      margin: EdgeInsets.only(
-          top: 20.0, bottom: ishover ? 20.0 : 40.0, left: 10.0, right: 10.0),
+      margin:
+          EdgeInsets.only(top: ishover ? 0.0 : 15.0, left: 10.0, right: 10.0),
       duration: const Duration(milliseconds: 100),
       child: Theme(
         data: Theme.of(context).copyWith(
@@ -326,8 +394,8 @@ class _DiscussionTextsState extends State<DiscussionTexts> {
             });
           },
           child: Container(
-            // alignment: Alignment.center,
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            padding:
+                EdgeInsets.only(top: 5.0, left: 10.0, right: 10.0, bottom: 5.0),
             decoration: BoxDecoration(
                 boxShadow: const [
                   BoxShadow(
