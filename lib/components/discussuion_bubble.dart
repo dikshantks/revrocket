@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:like_button/like_button.dart';
 import '../UI models/constants.dart';
 import 'package:revrocket/components/disucssion_user.dart';
 
