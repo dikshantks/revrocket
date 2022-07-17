@@ -83,7 +83,7 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
         question: "qui1",
         description: "desc1 ",
         docID: "uid1",
-        listAnswer: {
+        listAnswer: [
           {
             "answer": "yo",
             "timeofpublish": "sfdsf",
@@ -96,34 +96,34 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
             "uid": "qwe",
             'username': "user55",
           }
-        }),
+        ]),
     DiscusionsList(
         dateAdded: 'yogoo',
         username: "user2",
         question: "qui2",
         description: "desc2 ",
         docID: "uid2",
-        listAnswer: {
+        listAnswer: [
           {
             "answer": "yo",
             "timeofpublish": "sfdsf",
             "uid": "qwe",
             'username': "user2",
           }
-        }),
+        ]),
     DiscusionsList(
         username: "user3",
         question: "qui3",
         description: "desc3 ",
         docID: "uid3",
-        listAnswer: {
+        listAnswer: [
           {
             "answer": "yo",
             "timeofpublish": "sfdsf",
             "uid": "qwe",
             'username': "user5",
           }
-        })
+        ])
   ];
 
   bool isloggedin = false;
@@ -152,6 +152,7 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
                     itemCount: sample.length,
                     itemBuilder: (context, index) {
                       return discussion_bubble(
+                        listAnswer: sample[index].listAnswer,
                         time: sample[index].dateAdded,
                         question: sample[index].question,
                         descrition: sample[index].description,
@@ -163,6 +164,7 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
                             MaterialPageRoute(
                               builder: (context) => discuss_openscreen(
                                 question: sample[index].question,
+                                listAnswer: sample[index].listAnswer,
                               ),
                             ),
                           );

@@ -2,19 +2,21 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:like_button/like_button.dart';
 import '../UI models/constants.dart';
 import 'package:revrocket/components/disucssion_user.dart';
 
 class discussion_bubble extends StatefulWidget {
-  discussion_bubble({
-    Key? key,
-    required this.palet_size,
-    required this.question,
-    required this.descrition,
-    required this.name,
-    required this.onpress,
-    required this.time,
-  }) : super(key: key);
+  discussion_bubble(
+      {Key? key,
+      required this.palet_size,
+      required this.question,
+      required this.descrition,
+      required this.name,
+      required this.onpress,
+      required this.time,
+      required this.listAnswer})
+      : super(key: key);
 
   final double palet_size;
   String name;
@@ -24,6 +26,7 @@ class discussion_bubble extends StatefulWidget {
   String time;
 
   var onpress;
+  List<Map<String, dynamic>> listAnswer;
 
   @override
   State<discussion_bubble> createState() => _discussion_bubbleState();
@@ -44,7 +47,7 @@ class _discussion_bubbleState extends State<discussion_bubble> {
         height: widget.palet_size,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             Expanded(
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
@@ -92,6 +95,51 @@ class _discussion_bubbleState extends State<discussion_bubble> {
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0),
                 // color: ksecondarytext,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    SizedBox(
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.upgrade_rounded,
+                          ),
+                          Text(
+                            '${widget.listAnswer.length}',
+                            style:
+                                TextStyle(fontSize: 20.0, color: kprimarytext),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.upcoming,
+                          ),
+                          Text(
+                            '${widget.listAnswer.length}',
+                            style:
+                                TextStyle(fontSize: 20.0, color: kprimarytext),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      color: kErrorColor,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Center(
+                          child: Text(
+                            "See Ansers",
+                            style: GoogleFonts.poppins(color: kprimarytext),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             )
           ],

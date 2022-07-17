@@ -21,7 +21,7 @@ class DiscusionsList extends Users {
   late String username = super.username;
   late String dateAdded = "";
 
-  late var listAnswer = {
+  late List<Map<String, dynamic>> listAnswer = [
     {
       "answer": "",
       "timeofpublish": "",
@@ -34,7 +34,7 @@ class DiscusionsList extends Users {
       "uid": "",
       'username': "",
     }
-  };
+  ];
 
   DiscusionsList({
     this.docID = '',
