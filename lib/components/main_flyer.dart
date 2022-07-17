@@ -29,7 +29,7 @@ class Mainscreen extends StatelessWidget {
             ),
             Expanded(
               flex: 5,
-              child: Container(
+              child: SafeArea(
                 // color: Colors.yellow,
                 child: CarouselSlider.builder(
                   options: CarouselOptions(

@@ -1,13 +1,10 @@
 // ignore_for_file: must_be_immutable, camel_case_types, prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/button_list.dart';
-import 'package:flutter_signin_button/button_view.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:revrocket/UI%20models/constants.dart';
 import 'package:revrocket/pages/discussion_forum.dart';
 
-import 'package:revrocket/pages/discussion_openpage.dart';
 import 'package:revrocket/pages/home_page.dart';
 
 class discuss_openscreen extends StatelessWidget {
