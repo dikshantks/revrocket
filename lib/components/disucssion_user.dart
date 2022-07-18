@@ -10,29 +10,29 @@ class discussion_user extends StatelessWidget {
     Key? key,
     required this.name,
     required this.time,
+    this.padd_marg = 60.0,
   }) : super(key: key);
 
   String name;
   String time;
 
+  double padd_marg;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: kErrorColor,
+      // color: ksecondarytext,
       width: MediaQuery.of(context).size.width * 0.3,
-      height: 50.0,
+      height: padd_marg,
       child: Row(
         children: [
           const CircleAvatar(
-            radius: 40.0,
+            minRadius: 20.0,
+            maxRadius: 35.0,
             backgroundColor: klines,
           ),
-          const VerticalDivider(
-            color: kprimaryscaffhold,
-            thickness: 1,
-          ),
           const SizedBox(
-            width: 30.0,
+            width: 20.0,
           ),
           Container(
             height: 70.0,

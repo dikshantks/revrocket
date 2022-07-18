@@ -79,6 +79,42 @@ class stock_learn1 extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
+            flex: 1,
+            child: Container(
+              // alignment: Alignment.centerLeft,
+              margin: EdgeInsets.only(left: 50.0),
+              padding: EdgeInsets.only(right: 10.0),
+              child: Column(
+                children: [
+                  Center(
+                    child: FittedBox(
+                      child: Text(
+                        'Table of content',
+                        style: GoogleFonts.poppins(
+                            color: kprimarytext, fontSize: 50.0),
+                      ),
+                    ),
+                  ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: Subheading_arr.length,
+                    itemBuilder: (context, index) {
+                      return subheading_tile(
+                        index: index,
+                        subheading: Subheading_arr[index],
+                        headLineKeyList: headLineKeyList,
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+          VerticalDivider(
+            thickness: 0.5,
+            color: klines,
+          ),
+          Expanded(
             flex: 3,
             child: Padding(
               padding: const EdgeInsets.only(
@@ -127,41 +163,6 @@ class stock_learn1 extends StatelessWidget {
                     )
                   ],
                 ),
-              ),
-            ),
-          ),
-          VerticalDivider(
-            thickness: 0.5,
-            color: klines,
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              // alignment: Alignment.centerLeft,
-              padding: EdgeInsets.only(right: 10.0),
-              child: Column(
-                children: [
-                  Center(
-                    child: FittedBox(
-                      child: Text(
-                        'Table of content',
-                        style: GoogleFonts.poppins(
-                            color: kprimarytext, fontSize: 50.0),
-                      ),
-                    ),
-                  ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: Subheading_arr.length,
-                    itemBuilder: (context, index) {
-                      return subheading_tile(
-                        index: index,
-                        subheading: Subheading_arr[index],
-                        headLineKeyList: headLineKeyList,
-                      );
-                    },
-                  ),
-                ],
               ),
             ),
           ),

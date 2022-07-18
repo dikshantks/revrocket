@@ -20,6 +20,7 @@ class DiscusionsList extends Users {
   late String description = "";
   late String username = super.username;
   late String dateAdded = "";
+  late int likes = 0;
 
   late List<Map<String, dynamic>> listAnswer = [
     {
@@ -43,5 +44,6 @@ class DiscusionsList extends Users {
     required this.listAnswer,
     this.question = '',
     this.username = '',
+    this.likes = 0,
   });
 }

@@ -7,6 +7,7 @@ import 'package:flutter_signin_button/button_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:revrocket/UI%20models/constants.dart';
 import 'package:revrocket/components/discussuion_bubble.dart';
+import 'package:revrocket/components/textfor_page1.dart';
 import 'package:revrocket/pages/discussion_openpage.dart';
 import 'package:revrocket/pages/home_page.dart';
 import 'package:revrocket/tests/test_class.dart';
@@ -80,9 +81,10 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
     DiscusionsList(
         dateAdded: 'march lol',
         username: "user1",
-        question: "qui1",
-        description: "desc1 ",
-        docID: "uid1",
+        question: "what si best platform?",
+        description:
+            'Before you stuensible reasons behind every tradeBefore you stuensible',
+        likes: 3,
         listAnswer: [
           {
             "answer": "yo",
@@ -100,9 +102,10 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
     DiscusionsList(
         dateAdded: 'yogoo',
         username: "user2",
-        question: "qui2",
+        question: "am i good developer?",
         description: "desc2 ",
         docID: "uid2",
+        likes: 1,
         listAnswer: [
           {
             "answer": "yo",
@@ -152,6 +155,7 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
                     itemCount: sample.length,
                     itemBuilder: (context, index) {
                       return discussion_bubble(
+                        details: sample[index],
                         listAnswer: sample[index].listAnswer,
                         time: sample[index].dateAdded,
                         question: sample[index].question,
@@ -163,7 +167,7 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => discuss_openscreen(
-                                question: sample[index].question,
+                                current: sample[index],
                                 listAnswer: sample[index].listAnswer,
                               ),
                             ),
@@ -239,7 +243,8 @@ class afterLogin extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Text("write your quiestion"),
+        Text("write your quiestion",
+            style: GoogleFonts.poppins(fontSize: 15.0, color: kprimarytext)),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
           child: TextField(
@@ -256,7 +261,11 @@ class afterLogin extends StatelessWidget {
           ),
         ),
         SizedBox(width: 20.0),
-        Text("decribe"),
+        Text("decribe",
+            style: GoogleFonts.coda(
+                fontWeight: FontWeight.w600,
+                fontSize: 15.0,
+                color: kprimarytext)),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 20.0),
           height: 200.0,
@@ -306,7 +315,10 @@ class comingSoonScreen extends StatelessWidget {
           color: kdiscussionpage,
           borderRadius: BorderRadius.circular(20.0),
           boxShadow: const [
-            BoxShadow(blurRadius: 20.0),
+            BoxShadow(
+              color: Color.fromARGB(255, 19, 18, 18),
+              blurRadius: 20.0,
+            ),
           ],
         ),
         height: paletSize,
