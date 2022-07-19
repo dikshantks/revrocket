@@ -1,13 +1,14 @@
 // ignore_for_file: must_be_immutable, camel_case_types, prefer_const_constructors, non_constant_identifier_names
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:like_button/like_button.dart';
 import 'package:revrocket/UI%20models/constants.dart';
-import 'package:revrocket/components/discussuion_bubble.dart';
-import 'package:revrocket/components/textfor_page1.dart';
+import 'package:revrocket/components/after_Login.dart';
+import 'package:revrocket/components/disucssion_user.dart';
+import 'package:revrocket/models/firebaseDiscussionList.dart';
 import 'package:revrocket/pages/discussion_openpage.dart';
 import 'package:revrocket/pages/home_page.dart';
 import 'package:revrocket/tests/test_class.dart';
@@ -138,7 +139,7 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
       children: [
         Expanded(
           child: Row(
-            children: <Widget>[
+            children: [
               comingSoonScreen(paletSize: paletSize),
               VerticalDivider(
                 indent: 20,
@@ -150,30 +151,30 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
                 flex: 3,
                 child: Container(
                   padding: EdgeInsets.only(top: 20.0),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: sample.length,
-                    itemBuilder: (context, index) {
-                      return discussion_bubble(
-                        details: sample[index],
-                        listAnswer: sample[index].listAnswer,
-                        time: sample[index].dateAdded,
-                        question: sample[index].question,
-                        descrition: sample[index].description,
-                        name: sample[index].username,
-                        palet_size: paletSize,
-                        onpress: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => discuss_openscreen(
-                                current: sample[index],
-                                listAnswer: sample[index].listAnswer,
-                              ),
+                  child: StreamBuilder<List<DiscusionsList>>(
+                    // initialData: sample,
+                    stream: readFinalDiscus(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        List<DiscusionsList> DiskSus = snapshot.data!;
+                        return ListView(
+                          children: DiskSus.map<Widget>(buildBox).toList(),
+                        );
+                      } else if (snapshot.hasError) {
+                        return Center(
+                          child: Text(
+                            snapshot.error.toString(),
+                            style: GoogleFonts.aBeeZee(
+                              color: kprimarytext,
+                              fontSize: 60.0,
                             ),
-                          );
-                        },
-                      );
+                          ),
+                        );
+                      } else {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
                     },
                   ),
                 ),
@@ -233,198 +234,140 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
   }
 }
 
-class afterLogin extends StatelessWidget {
-  const afterLogin({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+Widget buildBox(DiscusionsList DiskSus) {
+  // final boxHeight = MediaQuery.of(context).size.height * 0.3;
+//
+  return Container(
+    margin: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
+    decoration: BoxDecoration(
+      color: kdiscussionpage,
+      borderRadius: BorderRadius.circular(35.0),
+      boxShadow: const [
+        BoxShadow(
+          color: Color.fromARGB(234, 22, 22, 22),
+          blurRadius: 25.0,
+          spreadRadius: 5.0,
+        ),
+      ],
+    ),
+    height: 300.0,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text("write your quiestion",
-            style: GoogleFonts.poppins(fontSize: 15.0, color: kprimarytext)),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-          child: TextField(
-            autocorrect: false,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              fillColor: ksecondarytext,
-              filled: true,
-              hintText: "am i dumb?",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(width: 20.0),
-        Text("decribe",
-            style: GoogleFonts.coda(
-                fontWeight: FontWeight.w600,
-                fontSize: 15.0,
-                color: kprimarytext)),
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 20.0),
-          height: 200.0,
-          child: TextFormField(
-            minLines: null,
-            maxLines: null,
-            expands: true,
-            autocorrect: false,
-            textAlign: TextAlign.left,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              fillColor: ksecondarytext,
-              filled: true,
-              helperMaxLines: 2,
-              hintText:
-                  "no seriously this website took me a whoole month  and why did i chose \nflutter on web stack for this ",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-          ),
-        ),
-        Container(
-            margin: EdgeInsets.symmetric(vertical: 10.0),
-            height: 70.0,
-            child: DiscussionTexts(heading: "Submit", onpress: () {}))
-      ],
-    );
-  }
-}
-
-class comingSoonScreen extends StatelessWidget {
-  const comingSoonScreen({
-    Key? key,
-    required this.paletSize,
-  }) : super(key: key);
-
-  final double paletSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10.0),
-        decoration: BoxDecoration(
-          color: kdiscussionpage,
-          borderRadius: BorderRadius.circular(20.0),
-          boxShadow: const [
-            BoxShadow(
-              color: Color.fromARGB(255, 19, 18, 18),
-              blurRadius: 20.0,
-            ),
-          ],
-        ),
-        height: paletSize,
-        child: Center(child: Text("jfslfkjslfksjflsjl")),
-      ),
-    );
-  }
-}
-
-class signin_google extends StatefulWidget {
-  signin_google({
-    Key? key,
-    required this.onpress,
-  }) : super(key: key);
-
-  VoidCallback onpress;
-
-  @override
-  State<signin_google> createState() => _signin_googleState();
-}
-
-class _signin_googleState extends State<signin_google> {
-  @override
-  Widget build(BuildContext context) {
-    // var usernow = UserModel();
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 10.0),
-          child: FittedBox(
-            child: Text(
-              "sign in to answer or ask question",
-              style: GoogleFonts.poppins(
-                color: ksecondarytext,
-                fontSize: 20.0,
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 20.0,
-        ),
-        SignInButton(
-          Buttons.GoogleDark,
-          onPressed: widget.onpress,
-        ),
-      ],
-    );
-  }
-}
-
-class DiscussionTexts extends StatefulWidget {
-  DiscussionTexts({Key? key, required this.heading, required this.onpress})
-      : super(key: key);
-
-  String heading;
-
-  VoidCallback onpress;
-
-  @override
-  State<DiscussionTexts> createState() => _DiscussionTextsState();
-}
-
-class _DiscussionTextsState extends State<DiscussionTexts> {
-  bool ishover = false;
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      alignment: Alignment.center,
-      margin:
-          EdgeInsets.only(top: ishover ? 0.0 : 15.0, left: 10.0, right: 10.0),
-      duration: const Duration(milliseconds: 100),
-      child: Theme(
-        data: Theme.of(context).copyWith(
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          hoverColor: Colors.transparent,
-        ),
-        child: InkWell(
-          onTap: widget.onpress,
-          onHover: (f) {
-            setState(() {
-              ishover = f;
-            });
-          },
+        Expanded(
           child: Container(
-            padding:
-                EdgeInsets.only(top: 5.0, left: 10.0, right: 10.0, bottom: 5.0),
-            decoration: BoxDecoration(
-                boxShadow: const [
-                  BoxShadow(
-                      spreadRadius: 5, blurRadius: 5, color: Colors.black12)
-                ],
-                color: kdiscussionpage,
-                borderRadius: const BorderRadius.all(Radius.circular(15))),
-            child: Text(
-              widget.heading,
-              style: GoogleFonts.poppins(
-                fontSize: 30.0,
-                color: kprimarytext,
-              ),
+            margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+            child: discussion_user(
+              name: DiskSus.username,
+              time: DiskSus.dateAdded,
             ),
           ),
         ),
-      ),
-    );
-  }
+        Expanded(
+          flex: 2,
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 1.0),
+            // color: kErrorColor,
+            child: Column(
+              children: [
+                Container(
+                  // color: kErrorColor,
+                  height: 40.0,
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    // "a big realllly big wuestion to test it i hope it work fine",
+                    DiskSus.question,
+                    style: GoogleFonts.poppins(
+                      color: ksecondarytext,
+                      fontSize: 30.0,
+                    ),
+                  ),
+                ),
+                Container(
+                  // color: kErrorColor,
+                  height: 50.0,
+                  // height: MediaQuery.of(context).size.height * 0.09,
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    DiskSus.description,
+                    style: GoogleFonts.poppins(
+                      color: ksecondarytext,
+                      fontWeight: FontWeight.w300,
+                      fontSize: 15.0,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Divider(
+          thickness: 1.5,
+        ),
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                SizedBox(
+                  child: Row(
+                    children: <Widget>[
+                      LikeButton(),
+                      Text(
+                        ' ${DiskSus.likes}',
+                        style: GoogleFonts.poppins(
+                            fontSize: 20.0, color: kprimarytext),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        '${DiskSus.listAnswer?.length} Answers',
+                        style: GoogleFonts.poppins(
+                            fontSize: 20.0, color: kprimarytext),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10.0),
+                  // color: kErrorColor,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => discuss_openscreen(
+                      //       current: DiskSus,
+                      //       listAnswer: DiskSus.listAnswer!,
+                      //     ),
+                      //   ),
+                      // );
+                    },
+                    child: Center(
+                      child: Text(
+                        "See Answers",
+                        style: GoogleFonts.poppins(
+                            fontSize: 20.0, color: kprimarytext),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
+    ),
+  );
+
+  // return ListTile(
+  //   leading: Text(DiskSus.description),
+  // );
 }

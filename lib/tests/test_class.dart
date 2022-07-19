@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class Users {
   late String username = '';
@@ -22,7 +23,7 @@ class DiscusionsList extends Users {
   late String dateAdded = "";
   late int likes = 0;
 
-  late List<Map<String, dynamic>> listAnswer = [
+  List<Map<String, String>>? listAnswer = [
     {
       "answer": "",
       "timeofpublish": "",
@@ -41,9 +42,19 @@ class DiscusionsList extends Users {
     this.docID = '',
     this.dateAdded = '',
     this.description = '',
-    required this.listAnswer,
+    this.listAnswer,
     this.question = '',
     this.username = '',
     this.likes = 0,
   });
+
+  static DiscusionsList fromjson(Map<String, dynamic> json) => DiscusionsList(
+        // listAnswer: json['list of answer'],
+        question: json['question'],
+        docID: json['doc_UID'],
+        description: json['description'],
+        dateAdded: json['date of publish'],
+        likes: json['upvotes'],
+        username: json['user'],
+      );
 }

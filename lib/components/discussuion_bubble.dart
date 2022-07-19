@@ -1,7 +1,9 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, camel_case_types, must_be_immutable, avoid_print, prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_const_constructors, camel_case_types, must_be_immutable, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:like_button/like_button.dart';
+import 'package:revrocket/pages/discussion_openpage.dart';
 import 'package:revrocket/tests/test_class.dart';
 import '../UI models/constants.dart';
 import 'package:revrocket/components/disucssion_user.dart';
@@ -9,26 +11,12 @@ import 'package:revrocket/components/disucssion_user.dart';
 class discussion_bubble extends StatefulWidget {
   discussion_bubble({
     Key? key,
-    required this.palet_size,
-    required this.question,
-    required this.descrition,
-    required this.name,
-    required this.onpress,
-    required this.time,
     required this.listAnswer,
     required this.details,
   }) : super(key: key);
 
-  final double palet_size;
-  String name;
-  String question;
-  String descrition;
-
   DiscusionsList details;
 
-  String time;
-
-  var onpress;
   List<Map<String, dynamic>> listAnswer;
 
   @override
@@ -38,8 +26,9 @@ class discussion_bubble extends StatefulWidget {
 class _discussion_bubbleState extends State<discussion_bubble> {
   @override
   Widget build(BuildContext context) {
+    final boxHeight = MediaQuery.of(context).size.height * 0.3;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
+      margin: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
       decoration: BoxDecoration(
         color: kdiscussionpage,
         borderRadius: BorderRadius.circular(35.0),
@@ -51,7 +40,7 @@ class _discussion_bubbleState extends State<discussion_bubble> {
           ),
         ],
       ),
-      height: widget.palet_size,
+      height: boxHeight,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -85,8 +74,8 @@ class _discussion_bubbleState extends State<discussion_bubble> {
                     ),
                   ),
                   Container(
-                    color: kErrorColor,
-                    height: 70.0,
+                    // color: kErrorColor,
+                    height: MediaQuery.of(context).size.height * 0.09,
                     alignment: Alignment.topLeft,
                     child: Text(
                       widget.details.description,
@@ -106,17 +95,16 @@ class _discussion_bubbleState extends State<discussion_bubble> {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
               margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0),
-              // color: ksecondarytext,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   SizedBox(
                     child: Row(
                       children: <Widget>[
-                        Icon(
-                          Icons.favorite,
-                        ),
+                        LikeButton(),
                         Text(
                           ' ${widget.details.likes}',
                           style: GoogleFonts.poppins(
@@ -137,10 +125,20 @@ class _discussion_bubbleState extends State<discussion_bubble> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 5.0),
-                    color: kErrorColor,
+                    margin: EdgeInsets.symmetric(vertical: 10.0),
+                    // color: kErrorColor,
                     child: ElevatedButton(
-                      onPressed: widget.onpress,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => discuss_openscreen(
+                              current: widget.details,
+                              listAnswer: widget.listAnswer,
+                            ),
+                          ),
+                        );
+                      },
                       child: Center(
                         child: Text(
                           "See Answers",

@@ -1,12 +1,12 @@
-// ignore_for_file: must_be_immutable, camel_case_types, prefer_const_constructors, non_constant_identifier_names
+// ignore_for_file: must_be_immutable, camel_case_types, prefer_const_constructors, non_constant_identifier_names, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:revrocket/UI%20models/constants.dart';
+import 'package:revrocket/components/after_Login.dart';
 import 'package:revrocket/components/disucssion_user.dart';
-import 'package:revrocket/pages/discussion_forum.dart';
 
 import 'package:revrocket/pages/home_page.dart';
 import 'package:revrocket/tests/test_class.dart';
@@ -146,7 +146,7 @@ class discuss_mainscreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Text(
-                                '${openedDiscussion.dateAdded} likes',
+                                '${openedDiscussion.likes} likes',
                                 style: GoogleFonts.podkova(
                                     fontSize: 25.0,
                                     fontWeight: FontWeight.w300,
@@ -172,7 +172,7 @@ class discuss_mainscreen extends StatelessWidget {
                         itemCount: listAnswer.length,
                         itemBuilder: (context, index) {
                           return AnswerLines(
-                            listAnswer: openedDiscussion.listAnswer,
+                            listAnswer: openedDiscussion.listAnswer!,
                             index: index,
                           );
                         },
@@ -185,24 +185,45 @@ class discuss_mainscreen extends StatelessWidget {
           ),
         ),
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 30.0),
-          child: Container(
-            height: 40.0,
-            width: size.width * 0.6,
-            child: TextFormField(
-              autocorrect: true,
-              textAlign: TextAlign.left,
-              style: TextStyle(color: Colors.black),
-              decoration: InputDecoration(
-                fillColor: ksecondarytext,
-                filled: true,
-                helperMaxLines: 2,
-                hintText: "write your anwer here",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
+          padding: EdgeInsets.symmetric(vertical: 10.0),
+          margin: EdgeInsets.symmetric(horizontal: 40.0),
+          height: 70.0,
+          width: size.width * 0.6,
+          child: Row(
+            children: <Widget>[
+              Container(
+                height: 50.0,
+                width: size.width * 0.5,
+                child: TextFormField(
+                  autocorrect: true,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                    fillColor: ksecondarytext,
+                    filled: true,
+                    helperMaxLines: 2,
+                    hintText: "write your Answer here",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
                 ),
               ),
-            ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10.0),
+                color: kErrorColor,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Center(
+                    child: Text(
+                      "See Answers",
+                      style: GoogleFonts.poppins(
+                          fontSize: 20.0, color: kprimarytext),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ],
