@@ -6,18 +6,17 @@ import 'package:flutter_signin_button/button_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:revrocket/UI%20models/constants.dart';
 import 'package:revrocket/components/discussuion_bubble.dart';
-import 'package:revrocket/components/home_text.dart';
-
 import 'package:revrocket/pages/discussion_openpage.dart';
 import 'package:revrocket/pages/home_page.dart';
 
 class Discussion_page extends StatelessWidget {
-  Discussion_page({Key? key, required this.screen}) : super(key: key);
-
-  Size screen;
+  const Discussion_page({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Size screen = MediaQuery.of(context).size;
     return Scaffold(
       // extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -34,7 +33,6 @@ class Discussion_page extends StatelessWidget {
                 flex: 1,
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 30.0),
-                  color: Colors.amber,
                 )),
             Row(
               children: [
@@ -50,8 +48,8 @@ class Discussion_page extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Row(
-                    children: [
-                      Text("HI , USER"),
+                    children: const <Widget>[
+                      Text("HI "),
                       Icon(Icons.text_rotation_angledown),
                     ],
                   ),
@@ -106,13 +104,6 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
                         name: "sfsdf",
                         palet_size: paletSize,
                         question: index.toString(),
-                        onpress: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => discuss_openscreen()),
-                          );
-                        },
                       );
                     },
                   ),
@@ -129,7 +120,11 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
                 child: SafeArea(
                   child: Center(
                       child: isloggedin == true
-                          ? afterLogin()
+                          ? Container(
+                              height: 30.0,
+                              width: 400.0,
+                              color: kErrorColor,
+                            )
                           : Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -242,7 +237,13 @@ class comingSoonScreen extends StatelessWidget {
           ],
         ),
         height: paletSize,
-        child: Center(child: Text("jfslfkjslfksjflsjl")),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
+          child: Image.asset(
+            'assets/flyers/coder_atwork.png',
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }

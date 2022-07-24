@@ -26,10 +26,7 @@ class TopNavBar extends StatelessWidget {
           Hometext(
             heading: "Get started",
             onpress: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Learnpage()),
-              );
+              Navigator.pushNamed(context, '/learnpage');
             },
           ),
           SizedBox(
@@ -38,14 +35,7 @@ class TopNavBar extends StatelessWidget {
           Hometext(
             heading: "discuss",
             onpress: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Discussion_page(
-                    screen: screen,
-                  ),
-                ),
-              );
+              Navigator.pushNamed(context, '/forum');
             },
           ),
         ],

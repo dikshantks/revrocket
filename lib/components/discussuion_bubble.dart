@@ -12,15 +12,12 @@ class discussion_bubble extends StatefulWidget {
     required this.question,
     required this.descrition,
     required this.name,
-    required this.onpress,
   }) : super(key: key);
 
   final double palet_size;
   String name;
   String question;
   String descrition;
-
-  var onpress;
 
   @override
   State<discussion_bubble> createState() => _discussion_bubbleState();
@@ -29,69 +26,66 @@ class discussion_bubble extends StatefulWidget {
 class _discussion_bubbleState extends State<discussion_bubble> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: widget.onpress,
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
-        decoration: BoxDecoration(
-          color: kdiscussionpage,
-          borderRadius: BorderRadius.circular(35.0),
-          boxShadow: const [BoxShadow(blurRadius: 10.0)],
-        ),
-        height: widget.palet_size,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-                child: discussion_user(
-                  name: widget.name,
-                ),
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
+      decoration: BoxDecoration(
+        color: kdiscussionpage,
+        borderRadius: BorderRadius.circular(35.0),
+        boxShadow: const [BoxShadow(blurRadius: 10.0)],
+      ),
+      height: widget.palet_size,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+              child: discussion_user(
+                name: widget.name,
               ),
             ),
-            Expanded(
-              flex: 2,
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 30.0, vertical: 1.0),
-                // color: kErrorColor,
-                child: Column(
-                  children: [
-                    Container(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        widget.question,
-                        style: GoogleFonts.poppins(
-                          color: ksecondarytext,
-                          fontSize: 30.0,
-                        ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 30.0, vertical: 1.0),
+              // color: kErrorColor,
+              child: Column(
+                children: [
+                  Container(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      widget.question,
+                      style: GoogleFonts.poppins(
+                        color: ksecondarytext,
+                        fontSize: 30.0,
                       ),
                     ),
-                    Container(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        widget.descrition,
-                        style: GoogleFonts.poppins(
-                          color: ksecondarytext,
-                          fontSize: 20.0,
-                        ),
+                  ),
+                  Container(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      widget.descrition,
+                      style: GoogleFonts.poppins(
+                        color: ksecondarytext,
+                        fontSize: 20.0,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-            Divider(
-              thickness: 1.5,
+          ),
+          Divider(
+            thickness: 1.5,
+          ),
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0),
+              // color: ksecondarytext,
             ),
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0),
-                // color: ksecondarytext,
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

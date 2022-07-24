@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:revrocket/UI%20models/themes.dart';
+import 'package:revrocket/pages/discussion_forum.dart';
 
 import 'package:revrocket/pages/home_page.dart';
+import 'package:revrocket/pages/stock1.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +26,12 @@ class _MyAppState extends State<MyApp> {
       theme: CustomTheme.mythme,
       debugShowCheckedModeBanner: false,
       title: 'Revenu Rocket',
-      home: const HomePage(),
+      initialRoute: '/learnpage',
+      routes: {
+        '/': (context) => const HomePage(),
+        '/learnpage': (context) => const Learnpage(),
+        '/forum': (context) => Discussion_page(),
+      },
     );
   }
 }
