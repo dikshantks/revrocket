@@ -41,6 +41,7 @@ class _discussion_bubbleState extends State<discussion_bubble> {
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
               child: discussion_user(
+                time: "bcb",
                 name: widget.name,
               ),
             ),
@@ -83,6 +84,55 @@ class _discussion_bubbleState extends State<discussion_bubble> {
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0),
               // color: ksecondarytext,
+            ),
+          ),
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0),
+              // color: ksecondarytext,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  SizedBox(
+                    child: Row(
+                      children: const <Widget>[
+                        Icon(
+                          Icons.upgrade_rounded,
+                        ),
+                        Text(
+                          'kk',
+                          style: TextStyle(fontSize: 20.0, color: kprimarytext),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    child: Row(
+                      children: const <Widget>[
+                        Icon(
+                          Icons.upcoming,
+                        ),
+                        Text(
+                          'kkk',
+                          style: TextStyle(fontSize: 20.0, color: kprimarytext),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    color: kErrorColor,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Center(
+                        child: Text(
+                          "See Ansers",
+                          style: GoogleFonts.poppins(color: kprimarytext),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           )
         ],

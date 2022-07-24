@@ -32,6 +32,7 @@ class Mainscreen extends StatelessWidget {
                 color: Colors.yellow,
                 child: CarouselSlider.builder(
                   options: CarouselOptions(
+                    autoPlayCurve: Curves.easeIn,
                     autoPlay: true,
                     // reverse: true,
                     autoPlayInterval: const Duration(seconds: 2),

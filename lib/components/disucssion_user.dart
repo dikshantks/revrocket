@@ -9,9 +9,11 @@ class discussion_user extends StatelessWidget {
   discussion_user({
     Key? key,
     required this.name,
+    required this.time,
   }) : super(key: key);
 
   String name;
+  String time;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,7 @@ class discussion_user extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "times",
+                    time,
                     textAlign: TextAlign.left,
                     style: GoogleFonts.poppins(
                       color: ksecondarytext,
