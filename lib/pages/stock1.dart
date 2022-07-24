@@ -73,12 +73,12 @@ class stock_learn1 extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Row(
-        children: [
+        children: <Widget>[
           Expanded(
             flex: 1,
             child: Container(
-              // alignment: Alignment.centerLeft,
-              padding: EdgeInsets.only(right: 10.0),
+              padding: EdgeInsets.only(top: 20.0),
+              color: kErrorColor,
               child: Column(
                 children: [
                   Container(
@@ -178,12 +178,15 @@ class subheading_tile extends StatelessWidget {
             duration: const Duration(seconds: 1));
       },
       child: Container(
+        height: 30.0,
         color: kErrorColor,
         margin: EdgeInsets.only(top: 10.0),
         padding: EdgeInsets.only(left: 20.0),
-        child: Text(
-          subheading,
-          style: GoogleFonts.lato(fontSize: 25.0, color: kprimarytext),
+        child: FittedBox(
+          child: Text(
+            subheading,
+            style: GoogleFonts.lato(fontSize: 20.0, color: kprimarytext),
+          ),
         ),
       ),
     );

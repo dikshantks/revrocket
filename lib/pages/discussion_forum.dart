@@ -151,6 +151,7 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
                     itemCount: sample.length,
                     itemBuilder: (context, index) {
                       return discussion_bubble(
+                        CurrentForum: sample[index],
                         question: sample[index].question,
                         descrition: sample[index].description,
                         name: sample[index].username,

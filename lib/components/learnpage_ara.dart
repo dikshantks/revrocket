@@ -43,8 +43,8 @@ class subheadings extends StatelessWidget {
 
 class Content extends StatelessWidget {
   // ignore: use_key_in_widget_constructors
-  Content({this.content});
-  final content;
+  Content({this.content = ''});
+  String content;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -56,7 +56,7 @@ class Content extends StatelessWidget {
           fontSize: 20.0,
           color: Colors.white,
         ),
-        textAlign: TextAlign.justify,
+        textAlign: TextAlign.start,
       ),
     );
   }

@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:like_button/like_button.dart';
+import 'package:revrocket/tests/test_class.dart';
 import '../UI models/constants.dart';
 import 'package:revrocket/components/disucssion_user.dart';
 
@@ -12,12 +14,15 @@ class discussion_bubble extends StatefulWidget {
     required this.question,
     required this.descrition,
     required this.name,
+    required this.CurrentForum,
   }) : super(key: key);
 
   final double palet_size;
   String name;
   String question;
   String descrition;
+
+  DiscusionsList CurrentForum;
 
   @override
   State<discussion_bubble> createState() => _discussion_bubbleState();
@@ -30,7 +35,7 @@ class _discussion_bubbleState extends State<discussion_bubble> {
       margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
       decoration: BoxDecoration(
         color: kdiscussionpage,
-        borderRadius: BorderRadius.circular(35.0),
+        borderRadius: BorderRadius.circular(30.0),
         boxShadow: const [BoxShadow(blurRadius: 10.0)],
       ),
       height: widget.palet_size,
@@ -84,23 +89,15 @@ class _discussion_bubbleState extends State<discussion_bubble> {
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0),
               // color: ksecondarytext,
-            ),
-          ),
-          Expanded(
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0),
-              // color: ksecondarytext,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   SizedBox(
                     child: Row(
                       children: const <Widget>[
-                        Icon(
-                          Icons.upgrade_rounded,
-                        ),
+                        LikeButton(),
                         Text(
-                          'kk',
+                          'likes',
                           style: TextStyle(fontSize: 20.0, color: kprimarytext),
                         ),
                       ],
@@ -108,24 +105,27 @@ class _discussion_bubbleState extends State<discussion_bubble> {
                   ),
                   SizedBox(
                     child: Row(
-                      children: const <Widget>[
+                      children: <Widget>[
                         Icon(
                           Icons.upcoming,
                         ),
                         Text(
-                          'kkk',
+                          '${widget.CurrentForum.listAnswer.length}  answers',
                           style: TextStyle(fontSize: 20.0, color: kprimarytext),
                         ),
                       ],
                     ),
                   ),
                   Container(
-                    color: kErrorColor,
+                    margin: EdgeInsets.symmetric(vertical: 10.0),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/forum_open',
+                            arguments: widget.CurrentForum);
+                      },
                       child: Center(
                         child: Text(
-                          "See Ansers",
+                          "Show Answers",
                           style: GoogleFonts.poppins(color: kprimarytext),
                         ),
                       ),

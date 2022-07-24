@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:revrocket/UI%20models/themes.dart';
 import 'package:revrocket/pages/discussion_forum.dart';
+import 'package:revrocket/pages/discussion_openpage.dart';
 
 import 'package:revrocket/pages/home_page.dart';
 import 'package:revrocket/pages/stock1.dart';
@@ -30,7 +31,8 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (context) => const HomePage(),
         '/learnpage': (context) => const Learnpage(),
-        '/forum': (context) => Discussion_page(),
+        '/forum': (context) => const Discussion_page(),
+        '/forum_open': (context) => discuss_openscreen(),
       },
     );
   }

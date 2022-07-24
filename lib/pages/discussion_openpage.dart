@@ -3,22 +3,26 @@
 import 'package:flutter/material.dart';
 import 'package:revrocket/UI%20models/constants.dart';
 import 'package:revrocket/components/affter_login.dart';
+import 'package:revrocket/pages/discussion_forum.dart';
 import 'package:revrocket/pages/home_page.dart';
+import 'package:revrocket/tests/test_class.dart';
 
 class discuss_openscreen extends StatelessWidget {
   discuss_openscreen({
     Key? key,
-    required this.question,
-    required this.listAnswer,
   }) : super(key: key);
 
-  String question;
+  // String question;
 
-  List<Map<String, dynamic>> listAnswer;
+  // List<Map<String, dynamic>> listAnswer;
 
-//  Size screen = MediaQuery.of(context).size;
   @override
   Widget build(BuildContext context) {
+    Size screen = MediaQuery.of(context).size;
+
+    final Curentform =
+        ModalRoute.of(context)!.settings.arguments as DiscusionsList;
+
     return Scaffold(
       // extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -52,8 +56,8 @@ class discuss_openscreen extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Row(
-                    children: const [
-                      Text("HI , USER"),
+                    children: [
+                      Text('hi , ${Curentform.username}'),
                       Icon(Icons.text_rotation_angledown),
                     ],
                   ),
@@ -64,8 +68,8 @@ class discuss_openscreen extends StatelessWidget {
         ),
       ),
       body: discuss_mainscreen(
-        question: question,
-        listAnswer: listAnswer,
+        question: "",
+        listAnswer: [],
       ),
     );
   }
