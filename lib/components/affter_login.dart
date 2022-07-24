@@ -61,3 +61,37 @@ class afterLogin extends StatelessWidget {
     );
   }
 }
+
+class comingSoonScreen extends StatelessWidget {
+  const comingSoonScreen({
+    Key? key,
+    required this.paletSize,
+  }) : super(key: key);
+
+  final double paletSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 1,
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10.0),
+        decoration: BoxDecoration(
+          color: kdiscussionpage,
+          borderRadius: BorderRadius.circular(20.0),
+          boxShadow: const [
+            BoxShadow(blurRadius: 20.0),
+          ],
+        ),
+        height: paletSize,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
+          child: Image.asset(
+            'assets/coder_atwork.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    );
+  }
+}

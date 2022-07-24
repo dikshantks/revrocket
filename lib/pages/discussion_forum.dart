@@ -1,13 +1,12 @@
 // ignore_for_file: must_be_immutable, camel_case_types, prefer_const_constructors, non_constant_identifier_names
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:revrocket/UI%20models/constants.dart';
+import 'package:revrocket/components/affter_login.dart';
 import 'package:revrocket/components/discussuion_bubble.dart';
-import 'package:revrocket/pages/discussion_openpage.dart';
 import 'package:revrocket/pages/home_page.dart';
 import 'package:revrocket/tests/test_class.dart';
 
@@ -27,7 +26,7 @@ class Discussion_page extends StatelessWidget {
         elevation: 2.0,
         leadingWidth: 100.0,
         leading: Reuselogo(onpress: () {
-          Navigator.pop(context);
+          Navigator.popUntil(context, ModalRoute.withName('/'));
         }),
         title: Row(
           children: [
@@ -216,40 +215,6 @@ class _discuss_mainscreenState extends State<discuss_mainscreen> {
           height: 50.0,
         ),
       ],
-    );
-  }
-}
-
-class comingSoonScreen extends StatelessWidget {
-  const comingSoonScreen({
-    Key? key,
-    required this.paletSize,
-  }) : super(key: key);
-
-  final double paletSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10.0),
-        decoration: BoxDecoration(
-          color: kdiscussionpage,
-          borderRadius: BorderRadius.circular(20.0),
-          boxShadow: const [
-            BoxShadow(blurRadius: 20.0),
-          ],
-        ),
-        height: paletSize,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
-          child: Image.asset(
-            'assets/flyers/coder_atwork.png',
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
     );
   }
 }
