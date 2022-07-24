@@ -11,8 +11,9 @@ class Mainscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imagepath = [
-      'assets/flyers/2.png',
-      "assets/flyers/3.png",
+      'assets/2.png',
+      'assets/3.png',
+      'assets/4.png',
     ];
     return Expanded(
       flex: 1,
@@ -29,7 +30,7 @@ class Mainscreen extends StatelessWidget {
             Expanded(
               flex: 5,
               child: Container(
-                color: Colors.yellow,
+                // color: Colors.yellow,
                 child: CarouselSlider.builder(
                   options: CarouselOptions(
                     autoPlayCurve: Curves.easeIn,
@@ -76,10 +77,7 @@ class Image_builder extends StatelessWidget {
       width: 900.0,
       margin: const EdgeInsets.symmetric(horizontal: 30.0),
       // color: Colors.red,
-      child: Container(
-        color: Colors.red,
-      ),
-      //  Image.asset(url, fit: BoxFit.contain),
+      child: Image.asset(url, fit: BoxFit.contain),
     );
   }
 }

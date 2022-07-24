@@ -10,9 +10,10 @@
         "program": "lib/main.dart"
     },
         {
-            "name": "revrocket",
+            "name": "webview",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "deviceId": "chrome"
         },
         {
             "name": "revrocket (profile mode)",

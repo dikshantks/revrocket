@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
       theme: CustomTheme.mythme,
       debugShowCheckedModeBanner: false,
       title: 'Revenu Rocket',
-      initialRoute: '/learnpage',
+      initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
         '/learnpage': (context) => const Learnpage(),
